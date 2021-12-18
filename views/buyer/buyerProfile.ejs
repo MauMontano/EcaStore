@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('../partials/buyerHeader'); %>
+</header>
+
+<main>
+    <div class="wrapper bg-white mt-sm-5">
+        <h4 class="pb-4 border-bottom align-center">Perfil de Usuario</h4>
+            <div class="d-flex justify-content-center">
+                <img class="mt-5"src="/images/logoAzul.png" width="55" height="50" alt="">
+                <h1 class="mt-5 text-primary"><%= title %></h1>
+            </div>
+        
+        <div class="py-2">
+            <div class="row py-2">
+                <div class="col-md-6"> <label for="firstname">Nombre</label> <input type="text" class="bg-light form-control" placeholder="Miguel"> </div>
+                <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Apellido</label> <input type="text" class="bg-light form-control" placeholder="Diaz"> </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-md-6"> <label for="email">E-mail</label> <input type="text" class="bg-light form-control" placeholder="steve_@email.com"> </div>
+                <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Telefono</label> <input type="tel" class="bg-light form-control" placeholder="55-20-25-38-97"> </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-md-6"> <label for="password">Contraseña</label> <input type="text" class="bg-light form-control" placeholder="************"> </div>
+               
+                <div class="col-md-6"> <label for="RFC">RFC</label> <input type="text" class="bg-light form-control" placeholder="RFC"> </div>
+            </div>
+            <div class="py-3 pb-4 border-bottom"> <button class="btn btn-primary mr-3">Guardar Cambios</button> <button class="btn border button">Cancelar</button> </div>
+            <div class="d-sm-flex align-items-center pt-3" id="deactivate">
+                <div> <b>Desactivar tu cuenta</b>
+                    <p>Este proceso eliminara todos tus datos de nuestros sistemas.</p>
+                </div>
+                <div class="ml-auto"> <button class="btn danger">Dar de baja</button> </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h4 class="text-primary">Direcciones de envío</h4>
+    </div>
+    <div class="mb-5 row d-flex justify-content-center">
+        <% directions.forEach(function(direction) { %>
+        <div class="col-3 card m-4">
+          <div class="card-body">
+              <h5 class="card-title">Direccion #<%= direction.id%></h5>
+              <h6 class="card-subtitle mb-2 text-muted"></h6>
+              <p class="card-text"><%= direction.street %> MZ <%= direction.numExt %>, <%= direction.colony %> - <%= direction.muni %> <%= direction.region %> - <%= direction.state %> C.P <%= direction.cp %></p>
+              <p class="card-text"><%= direction.contactName %> - <%= direction.contactPhone %></p>
+              <a href="#" class="card-link">Editar</a>
+              <a href="#" class="card-link">Selecionar</a>
+              <a href="#" class="card-link">Eliminar</a>
+          </div>
+        </div>
+        <% }); %>
+    </div>
+    <div class="mt-2 container d-flex justify-content-end">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#registerDirection" data-whatever="@mdo"><i class="bi bi-plus"></i>Agregar Dirección</button>
+    </div>
+    <div class="mt-2 container">
+        <h4 class="text-primary">Métodos de pago</h4>
+    </div>
+    <div class="mt-5 mb-5 container">
+        <div class="row bg-white">            
+            <div class="col-3 mt-4">
+                <p class="text-primary">Número de Tarjeta</p>
+            </div>
+            <div class="col-3 mt-4">
+                <p class="text-primary">Propietario</p>
+            </div>
+            <div class="col-3 mt-4">
+                <p class="text-primary">Banco</p>
+            </div>
+            <div class="col-3 mt-4">
+                <p class="text-primary">Fecha de Vencimiento:</p>
+            </div>
+            <div>
+              <!--<button type="button" class="btn btn-light text-primary mt-3">
+                <i class="bi bi-pencil-fill"></i> Editar </button>-->
+            </div>
+        </div>
+        <% methods.forEach(function(method) { %>
+            <div class="row bg-white" style="box-shadow: 2px 2px 7px 0.5px rgba(0, 0, 0, 0.2);">
+                <div class="col-3 mt-4">
+                    <p class="text-muted">***********<%= method.number[method.number.length-4]%><%= method.number[method.number.length-3]%><%= method.number[method.number.length-2]%><%= method.number[method.number.length-1]%>  </p>
+                </div>
+                <div class="col-3 mt-4">
+                    <p class="text-muted"><%= method.ownerName%>  </p>
+                </div>
+                <div class="col-3 mt-4">
+                    <p class="text-muted"><%= method.bankName%>  </p>
+                </div>
+                <div class="col-3 mt-4">
+                    <p class="text-muted">0<%= method.month%>/<%= method.year%> </p>
+                </div>
+                <div>
+                    <!--<button type="button" class="btn btn-light text-primary mt-3">
+                    <i class="bi bi-pencil-fill"></i> Editar </button>-->
+                </div>
+            </div>
+        <% }); %>
+    </div>
+    <div class="mt-2 container d-flex justify-content-end">
+        <button class="btn btn-primary ml-5 mb-5" data-toggle="modal" data-target="#registerMethod" data-whatever="@mdo"><i class="bi bi-plus"></i>Agregar Método de pago</button>
+    </div>
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="registerDirection" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Registra una dirección de envio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit='return sendEmail(this, event);' method='post' class="card-body">
+                    <div class="form-row">
+                      <div class="col form-group">
+                        <label for="state">Estado*</label>
+                        <select class="custom-select d-block w-100" id="state" required>
+                          <option value="">Elige un estado...</option>
+                          <option>CDMX</option>
+                        </select>
+                      </div> <!-- form-group end.// -->
+                      <div class="col form-group">
+                        <label>Region</label>
+                        <input id="phone" type="text" class="form-control" placeholder="" >
+                        <small class="form-text text-muted"></small>
+                      </div> <!-- form-group end.// -->
+                    </div> <!-- form-row end.// -->
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label for="state">Municipio</label>
+                            <select class="custom-select d-block w-100" id="state" required>
+                              <option value="">Elige un municipio...</option>
+                              <option>CDMX</option>
+                            </select>
+                        </div> <!-- form-group end.// -->
+                        <div class="col form-group">
+                            <label for="state">Colonia</label>
+                            <select class="custom-select d-block w-100" id="state" required>
+                              <option value="">Elige una colonia...</option>
+                              <option>CDMX</option>
+                            </select>
+                        </div> <!-- form-group end.// -->
+                    </div>
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label>Calle</label>
+                            <input id="phone" type="text" class="form-control" placeholder="" >
+                            <small class="form-text text-muted"></small>
+                        </div> <!-- form-group end.// -->
+                        <div class="col form-group">
+                            <label>Núm. Exterior*</label>
+                            <input id="phone" type="text" class="form-control" placeholder="" >
+                            <small class="form-text text-muted"></small>
+                        </div> <!-- form-group end.// -->
+                        <div class="col form-group">
+                            <label>Núm. Interior</label>
+                            <input id="phone" type="text" class="form-control" placeholder="" >
+                            <small class="form-text text-muted"></small>
+                        </div> <!-- form-group end.// -->
+                    </div>
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label>Nombre de contacto</label>
+                            <input id="phone" type="text" class="form-control" placeholder="" >
+                            <small class="form-text text-muted"></small>
+                        </div> <!-- form-group end.// -->
+                        <div class="col form-group">
+                            <label>Teléfono de contacto</label>
+                            <input id="phone" type="text" class="form-control" placeholder="" >
+                            <small class="form-text text-muted"></small>
+                        </div> <!-- form-group end.// -->
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Registrar  </button>
+                    </div> <!-- form-group// -->                 
+                </form>
+            </div>
+          <div class="modal-footer">
+            
+          </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="registerMethod" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Registra un método de pago</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+</body>
+</html>
+
+
+<style lang="css">
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: aliceblue
+}
+
+.wrapper {
+    padding: 30px 50px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    margin: 10px auto;
+    max-width: 600px
+}
+
+h4 {
+    letter-spacing: -1px;
+    font-weight: 400
+}
+
+
+#deactivate p {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 10px;
+    text-align: justify
+}
+
+#img-section b,
+#img-section button,
+#deactivate b {
+    font-size: 14px
+}
+
+label {
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #777;
+    padding-left: 3px
+}
+
+.form-control {
+    border-radius: 10px
+}
+
+input[placeholder] {
+    font-weight: 500
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1.5px solid #0779e4
+}
+
+select {
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    height: 40px;
+    padding: 5px 10px
+}
+
+select:focus {
+    outline: none
+}
+
+.button {
+    background-color: #fff;
+    color: #0779e4
+}
+
+.button:hover {
+    background-color: #0779e4;
+    color: #fff
+}
+
+.btn-primary {
+    background-color: #0779e4
+}
+
+.danger {
+    background-color: #fff;
+    color: #e20404;
+    border: 1px solid #ddd
+}
+
+.danger:hover {
+    background-color: #e20404;
+    color: #fff
+}
+
+@media(max-width:576px) {
+    .wrapper {
+        padding: 25px 20px
+    }
+
+    #deactivate {
+        line-height: 18px
+    }
+}
+</style>

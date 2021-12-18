@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('partials/buyerHeader'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+
+
+<!-- ============================  COMPONENT 5 ======================== -->
+<article class="card">
+	<div class="card-body">
+			<div class="row">
+				<aside class="col-md-6">
+						<article class="gallery-wrap">
+							<div class="card img-big-wrap">
+								<a href="#"> <img src="/images/<%= prodSelect.img %>" class="img-fluid"></a>
+							</div> <!-- card img-big-wrap.// -->
+							<div class="thumbs-wrap">
+								<a href="#" class="item-thumb"> <img src="/images/<%= prodSelect.img %>" alt="foto secundaria 1"></a>
+								<a href="#" class="item-thumb"> <img src="/images/<%= prodSelect.img %>" alt="foto secundaria 2"></a>
+							</div>
+						</article> <!-- gallery-wrap .end// -->
+				</aside>
+				<main class="col-md-6">
+					<article>
+						<a href="#" class="text-primary btn-link"><%= prodSelect.category %></a>
+						<h3 class="title"><%= prodSelect.name %></h3>
+						<hr>
+						
+						<div class="mb-3">
+							<h6><b>Vendedor</b></h6>
+							<p><%= prodSelect.seller %></p>
+						</div>
+
+						<div class="mb-3">
+							<h6><b>Descripción</b></h6>
+							<p><%= prodSelect.description %></p>
+							<h6><b>Características</b></h6>
+							<ul class="list-dots mb-0">
+								<li><%= prodSelect.carac1 %></li>
+								<li><%= prodSelect.carac2 %></li>
+								<li><%= prodSelect.carac3 %></li>
+							</ul>
+						</div>
+						<div class="mb-3">
+							<h6><b>Precio</b></h6>
+						</div>
+						<div class="mb-3">
+							<h2>$ <%= prodSelect.price %></h2>
+						</div> <!-- price-detail-wrap .// -->
+
+						<div class="mb-4">
+							<!--<a href="#" class="btn btn-primary">Comprar ahora</a>-->
+							<form onsubmit='return addToCart(this, event);' method='post'>
+								<button id="<%= prodSelect.id %>" class="btn btn-primary" type="submit">Agregar al carrito</a>
+							</form>
+						</div>
+						
+					</article> <!-- product-info-aside .// -->
+				</main> <!-- col.// -->
+			</div> <!-- row.// -->
+	</div> <!-- card-body.// -->
+</article> <!-- card.// -->
+<!-- ================ COMPONENT 5 END .// ================= -->    
+
+        
+    </div>
+</main>
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+</body>
+</html>

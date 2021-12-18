@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('partials/header'); %>
+</header>
+
+<main>
+    <div class="bg-light ">
+        <div class="d-flex justify-content-center">
+            <img class="mt-5"src="/images/logoAzul.png" width="55" height="50" alt="">
+            <h1 class="mt-5 text-primary"><%= title %></h1>
+        </div>
+        <div class="container text-center text-secondary">
+            <p>Digitienda es una plataforma en la que puedes 
+                vender y comprar productos de la manera más sencilla. 
+                ¡Únete<br> a esta gran comunidad y realiza tu primera 
+                compra o vende tu primer producto1  
+            </p>
+            <h5 class="font-weight-bold">Encuentra los mejores productos</h5>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-2 col-xs-8">
+                <img class="cat img-fluid" src="/images/playstation.jpg" >
+            </div>
+            <div class="col-md-2 col-xs-8">
+                <img class="cat img-fluid" src="/images/product.jpeg" >
+            </div>
+            <div class="col-md-2 col-xs-8">
+                <img class="cat img-fluid" src="/images/badbunny.jpeg" >
+            </div>
+        </div>
+        <div class="mt-5 row d-flex justify-content-center">
+            <form method="get" action="users/login">
+                <button type="submit" class="btn btn-primary btn-lg mb-5">Comprar ahora</button>
+            </form>
+        </div>
+    </div>
+</main>
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+</body>
+</html>

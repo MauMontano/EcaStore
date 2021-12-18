@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('../partials/buyerHeader'); %>
+</header>
+
+<main>
+    <br>
+    <h1 id="title">Dirección de envio</h1>
+
+    <div class="container" style="padding-left: 20%;">
+      
+        <div class="row">
+          <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Dirección de Envio</h4>
+            <form class="needs-validation" novalidate>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="firstName">Nombre</label>
+                  <input type="text" class="form-control" id="firstName" placeholder="nombre" value="" required>
+                  <div class="invalid-feedback">
+                    El nombre es Requerido.
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="lastName">Apellidos</label>
+                  <input type="text" class="form-control" id="lastName" placeholder="apellidos" value="" required>
+                  <div class="invalid-feedback">
+                    Los Apellidos son requeridos.
+                  </div>
+                </div>
+              </div>
+      
+              <div class="mb-3">
+                <label for="email">Email <span class="text-muted">(opcional)</span></label>
+                <input type="email" class="form-control" id="email" placeholder="tuemail@ejemplo.com">
+                <div class="invalid-feedback">
+                  Agregue un email valido.
+                </div>
+              </div>
+      
+              <div class="mb-3">
+                <label for="address">Direccion</label>
+                <input type="text" class="form-control" id="address" placeholder="Calle, numero y colonia" required>
+                <div class="invalid-feedback">
+                  Agregue su direccion de envio correctamente.
+                </div>
+              </div>
+      
+      
+              <div class="row">
+                <div class="col-md-5 mb-3">
+                  <label for="country">Pais</label>
+                  <select class="custom-select d-block w-100" id="country" required>
+                    <option value="">Elige un pais...</option>
+                    <option>Mexico</option>
+                    <option>Estados Unidos</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Agregue un Pais valido.
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="state">Estado</label>
+                  <select class="custom-select d-block w-100" id="state" required>
+                    <option value="">Elige un estado...</option>
+                    <option>CDMX</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Agregue un Estado valido.
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="zip">Codigo Postal</label>
+                  <input type="text" class="form-control" id="zip" placeholder="" required>
+                  <div class="invalid-feedback">
+                    Se necesita un Codigo Postal
+                  </div>
+                </div>
+              </div>
+
+              <hr class="mb-4">
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Continuar</button>
+            </form>
+          </div>
+        </div>
+      
+      </div>
+      <br>
+    <h1 id="title">Direcciones guardadas</h1>
+    <div class="row">
+      <div class="col-4 card" style="width: 24rem; margin-left: 10%;">
+        <div class="card-body">
+            <h5 class="card-title">Direccion #1</h5>
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <p class="card-text">Calle 32 #900 Col. San Bartolo, c.p. 31090</p>
+            <p class="card-text">Roberto Maciaz, robertomaciaz@gmail.com</p>
+            <a href="#" class="card-link">Editar</a>
+            <a href="#" class="card-link">Selecionar</a>
+            <a href="#" class="card-link">Eliminar</a>
+        </div>
+      </div>
+      <div class="col-4 card" style="width: 24rem; margin-left: 10%;">
+        <div class="card-body">
+            <h5 class="card-title">Direccion #2</h5>
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <p class="card-text">Calle Azul #400 Col. San Bartolo, c.p. 5473</p>
+            <p class="card-text">Roberto Maciaz, robertomaciaz@gmail.com</p>
+            <a href="#" class="card-link">Editar</a>
+            <a href="#" class="card-link">Selecionar</a>
+            <a href="#" class="card-link">Eliminar</a>
+        </div>
+      </div>
+    </div>
+    
+
+    <h1 id="title">Boton para pagar</h1>
+    <br>
+    <div style="padding-left: 47.5%;">
+    <button type="button" class="btn btn-primary launch" data-toggle="modal" data-target="#staticBackdrop"> <i class="fa fa-rocket"></i> Pagar
+    </button> 
+    </div>  
+    <br>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
+                    <div class="tabs mt-3">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab" data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true"> <img src="https://i.imgur.com/sB4jftM.png" width="80"> </a> </li>
+                            <li class="nav-item" role="presentation"> <a class="nav-link" id="paypal-tab" data-toggle="tab" href="#paypal" role="tab" aria-controls="paypal" aria-selected="false"> <img src="https://i.imgur.com/yK7EDD1.png" width="80"> </a> </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
+                                <div class="mt-4 mx-4">
+                                    <div class="text-center">
+                                        <h5>Tarjeta de credito</h5>
+                                    </div>
+                                    <div class="form mt-3">
+                                        <div class="inputbox"> <input type="text" name="name" class="form-control" required="required"> <span>Nombre del titular</span> </div>
+                                        <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>Numero de tarjeta</span> <i class="fa fa-eye"></i> </div>
+                                        <div class="d-flex flex-row">
+                                            <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>Fecha de vencimiento</span> </div>
+                                            <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>CVV</span> </div>
+                                        </div>
+                                        <div class="px-5 pay"> <button class="btn btn-success btn-block">Validar tarjeta</button> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab">
+                                <div class="px-5 mt-5">
+                                    <div class="inputbox"> <input type="text" name="name" class="form-control" required="required"> <span> Cuenta de Paypal</span> </div>
+                                    <div class="pay px-5"> <button class="btn btn-primary btn-block">Agregar Paypal</button> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+</body>
+</html>
+
+<style>
+    #title{
+    color: #0779e4;
+    text-align: center;
+}
+
+.launch {
+    height: 50px
+}
+
+.close {
+    font-size: 21px;
+    cursor: pointer
+}
+
+.modal-body {
+    height: 450px
+}
+
+.nav-tabs {
+    border: none !important
+}
+
+.nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ffffff #ffffff #fff;
+    border-top: 3px solid blue !important
+}
+
+.nav-tabs .nav-link {
+    margin-bottom: -1px;
+    border: 1px solid transparent;
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+    border-top: 3px solid #eee;
+    font-size: 20px
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: #e9ecef #ffffff #ffffff
+}
+
+.nav-tabs {
+    display: table !important;
+    width: 100%
+}
+
+.nav-item {
+    display: table-cell
+}
+
+.inputbox {
+    border-bottom: 1px solid #eee !important;
+    border: none;
+    font-weight: 600
+}
+
+.inputbox:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #8bbafe;
+    outline: 0;
+    box-shadow: none
+}
+
+.inputbox {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%
+}
+
+.inputbox span {
+    position: absolute;
+    top: 7px;
+    left: 11px;
+    transition: 0.5s
+}
+
+.inputbox i {
+    position: absolute;
+    top: 13px;
+    right: 8px;
+    transition: 0.5s;
+    color: #3F51B5
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+}
+
+.inputbox input:focus~span {
+    transform: translateX(-0px) translateY(-15px);
+    font-size: 12px
+}
+
+.inputbox input:valid~span {
+    transform: translateX(-0px) translateY(-15px);
+    font-size: 12px
+}
+
+.pay button {
+    height: 47px;
+    border-radius: 37px
+}
+
+</style>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Historial</title>
+		<%- include('partials/head'); %>
+	</head>
+	<body>
+	<header class="header">
+		<%- include('partials/buyerHeader'); %>
+	</header>
+	<main>
+		<div class="mb-5 container wow fadeIn">
+			<h2 class="mt-5 mb-5 h2 text-center">Historial de compras</h2>
+			<% products.forEach(function(product) { %>
+			<div class="card container mt-5" style="box-shadow: 2px 2px 7px 0.5px rgba(0, 0, 0, 0.2);">
+				<div class="card-body">
+				<div class="row">
+					<div class="col-4">
+						<img class="prodImg card-img-top image-fluid" src="/images/<%= product.img %>" alt="Card image cap">
+						<div class="mt-2 d-flex justify-content-around">
+							<button class="btn btn-primary">Devolver artículo</button>
+							<button class="btn btn-primary">Calificar</button>
+						</div>
+					</div>
+					<div class="col-8">
+						<h5 class=""><%= product.productName %></h5>
+						<h6 class="mt-2 text-muted text-muted"><%= product.productDescription %></h6>
+						<h6 class="mt-2 text-muted ">Número de unidades compradas: <span class="text-primary"><%= product.quantity %></span></h6>
+						<h6 class="mt-2 text-muted ">Precio total de la compra: <span class="text-primary">$ <%= product.quantity*product.price %></span></h6>
+						<h6 class="mt-2 text-muted ">Fecha de la compra: </h6>
+						<h6 class="mt-2 text-muted ">Fecha estimada de llegada: </h6>
+						<h6 class="mt-2 text-muted ">Enviado a:  <%= product.street %> MZ <%= product.numExt %>, <%= product.colony %> - <%= product.muni %> <%= product.region %> - <%= product.state %> C.P <%= product.cp %></h6>
+						<h6 class="mt-2 text-muted">Estado: En camino</h6>
+					</div>
+				</div>
+				</div>
+			</div>
+			<% }); %>
+		</div>
+	</main>	
+	<footer>
+		<%- include('partials/footer'); %>
+	</footer>
+	</body>
+</html>

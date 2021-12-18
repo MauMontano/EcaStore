@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>Borrar Metodo de Pago</h1>
+        <div class="saldoD">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Titular</th>
+                        <th>Numero de Tarjeta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <td><input type="radio" name="radios" id="radio1"/>
+                        <label for="radio1">1</label></td>
+                    <td>Jose Alfredo Palazuelos</td>
+                    <td>3245 - 2457 - 6543 - 8654</td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="radios" id="radio2"/>
+                            <label for="radio2">2</label></td>
+                        <td>Laura Mitchell Vazquez Hurtado</td>
+                        <td>4637 - 9862 - 3047 - 1085</td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+                
+            </div>
+    
+    
+    
+    <table class="tableS">
+            <tr>
+            <th><form method="get" action="/TarjetaC"><button class="buttonS" >Cancelar</button></form></th>
+            <th><form method="get" action="/MetodoE"><button class="buttonS">Eliminar</button></form></th>
+            </tr>
+        </table>
+</div>
+    </div>
+    
+</div>
+    
+</main>
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+</body>
+</html>

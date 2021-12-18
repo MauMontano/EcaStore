@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>Retirar Saldo</h1>
+        <div class="saldoD">
+        <h2>Tu Saldo Actual es de $<a id="saldo"></a>.00</h2>
+        <script>
+                saldo=100;
+                var actual;
+                actual=document.getElementById("saldo");
+                actual.innerHTML=saldo;
+        </script>
+        <div class="Abonar">
+            <h4>Seleccione el monto a Retirar</h4>
+              <table class="tableS">
+                  <tr>
+                    <th><button class="montoR" >$20.00</th>
+                    <th><button class="montoR" >$200.00</th>
+                </tr>
+                <tr>
+                    <th><button class="montoR" >$50.00</th>
+                    <th><button class="montoR" >$500.00</th>
+                </tr>
+                <tr>
+                    <th><button class="montoR" >$100.00</th>
+                    <th>$<input type="number"  class="montoR" min="20" max="9999"  placeholder="Otro Monto">.00</th>
+                </tr>
+              </table>  
+
+
+        </div>
+        <table class="tableS">
+            <tr>
+            <th><form method="get" action="/saldo"><button class="buttonS" >Cancelar</button></form></th>
+            <th><form method="get" action="/Retiro"><button id="deposito" class="buttonS">Realizar Retiro</button></form></th>
+            </tr>
+        </table>
+    </div>
+
+</div>
+    
+</main>
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+</body>
+</html>

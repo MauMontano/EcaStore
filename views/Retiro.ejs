@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>Ficha de Retiro</h1>
+        <div class="saldoD">
+        <h2>Cantidad a Retirar es de $<a id="saldo"></a>.00</h2>
+        <script>
+                saldo=100;
+                var actual;
+                actual=document.getElementById("saldo");
+                actual.innerHTML=saldo;
+        </script>
+        <div class="Abonar">
+            <h4>Numero de Cuenta</h4>
+              <div class="Ncuenta">
+                <h5><a id="1N"></a> - <a id="2N"></a> - <a id="3N"></a> - <a id="4N"></a></h5>
+                <script>
+                    N1=Math.floor((9999-1000)*Math.random())+1000;
+                    var PRIMERO;
+                    PRIMERO=document.getElementById("1N");
+                    PRIMERO.innerHTML=N1;
+                    N2=Math.floor((9999-1000)*Math.random())+1000;
+                    var SEGUNDO;
+                    SEGUNDO=document.getElementById("2N");
+                    SEGUNDO.innerHTML=N2;
+                    N3=Math.floor((9999-1000)*Math.random())+1000;
+                    var TERCERO;
+                    TERCERO=document.getElementById("3N");
+                    TERCERO.innerHTML=N3;
+                    N4=Math.floor((9999-1000)*Math.random())+1000;
+                    var CUARTO;
+                    CUARTO=document.getElementById("4N");
+                    CUARTO.innerHTML=N4;
+            </script> 
+              </div>
+            <h4>Numero de Referencia</h4>
+            <div class="Ncuenta">
+                <h5><a id="F"></a></h5>
+                <script>
+                    F=Math.floor((999999999-100000000)*Math.random())+100000000;
+                    var REF;
+                    REF=document.getElementById("F");
+                    REF.innerHTML=F;
+                </script> 
+              </div>
+            <h7>Tiene un maximo de 24hrs para realizar el Retiro</h6>
+        </div>
+        <table class="tableS">
+            <tr>
+            <th><form method="get" action="/"><button class="buttonS" >Inicio</button></form></th>
+            
+            <th><form method="get" action="/"><button class="buttonS">Imprimir</button></form></th>
+            </tr>
+        </table>
+    </div>
+</div>
+    
+</main>
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+</body>
+</html>

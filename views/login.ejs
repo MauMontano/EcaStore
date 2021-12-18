@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('partials/head'); %>
+    </head>
+
+    <body>
+        <header>
+            <%- include('partials/header'); %>
+        </header>
+
+        <main class="d-flex justify-content-center">
+            <div class="card mt-4 mb-5" style="width: 25rem;">
+                <article>
+                    <div class="d-flex justify-content-center">
+                        <img class="mt-5"src="/images/logoAzul.png" width="55" height="50" alt="">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <h4 class="card-title">Iniciar sesión</h5>
+                    </div>
+                    <form onsubmit='return loginUser(this, event);' method='post' class="card-body">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input id="email" type="text" class="form-control" placeholder="">
+                        </div> <!-- form-group end.// -->
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input id="password" type="password" class="form-control" placeholder="">
+                        </div> <!-- form-group end.// -->
+                        <div>
+                            <label>Rol de usuario</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="custom-control custom-radio custom-control-inline">
+                            <input id="buyerUser" class="custom-control-input" checked="" type="radio" name="rol" value="buyer">
+                            <span class="custom-control-label"> Comprador </span>
+                            </label>
+                            <label class="custom-control custom-radio custom-control-inline">
+                            <input id="sellerUser" class="custom-control-input" type="radio" name="rol" value="seller" >
+                            <span class="custom-control-label"> Vendedor </span>
+                            </label>
+                        </div> <!-- form-group end.// -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block"> Iniciar sesión </button>
+                        </div> <!-- form-group// -->                 
+                    </form>
+                </article>
+            </div>
+        </main>
+        <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+            <div  id="toast" class="toast" style="position: absolute; top: 0; right: 0;">
+              <div class="toast-header">
+                <img src="..." class="rounded mr-2" alt="...">
+                <strong class="mr-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="toast-body">
+                Hello, world! This is a toast message.
+              </div>
+            </div>
+        </div>
+        <footer>
+            <%- include('partials/footer'); %>
+        </footer>
+    </body>
+</html>

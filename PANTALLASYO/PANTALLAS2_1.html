@@ -1,0 +1,59 @@
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>PRIMEROS PASOS CON BRACKETS</title>
+        <link rel="stylesheet" type="text/css" href="pantallas.css"/>
+    </head>
+    
+    <body>
+        <ul class="menu">
+            <li><img src="logoBlanco.png" style="width:45px;height:45px;" id="logoB"></li>
+            <li><input type="search" placeholder="Buscar producto"></li>
+            <li><input type="button" value="Buscar"></li>
+            <li>
+                <select>
+                    <option>Calzado</option>
+                    <option>Electrónica</option>
+                    <option>Hogar</option>
+                    <option>Deporte</option>
+                    <option>Herramientas</option>
+                    <option>Juguetes</option>
+                    <option>Mascotas</option>
+                    <option>Libros</option>
+                </select>
+            </li>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Iniciar sesión</a></li>
+            <li><a href="#">Registrarse</a></li>
+            <li><a href="#">Carrito</a></li>
+        </ul>
+        
+        <center>
+          
+            <h1>Menú de reporte </h1>
+            <br>
+            <h2>Tenis blancos de tela</h2> 
+            <img src="shoes.jpeg" style="width:15%;">
+            <br><br><br>
+            <h2>Selecciona el motivo por el cual quieres reportar este producto</h2>
+            <br><br>
+            <input type="checkbox" id="plagio">
+            <label for="plagio">Plagio</label>
+            
+            <input type="checkbox" id="fraude">
+            <label for="fraude">Fraude</label>
+            
+            <input type="checkbox" id="ofensivo">
+            <label for="ofensivo">Contenido ofensivo</label>
+            
+            <input type="checkbox" id="Otra">
+            <label for="Otra">Otro</label>
+            
+            <br><br>
+            <input type="button" value="Enviar reporte" onclick="alert('Se ha reportado la publicacion');">
+                          
+        </center>
+        </body>
+</html>
+

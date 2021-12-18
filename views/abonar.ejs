@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>Abonar</h1>
+        <div class="saldoD">
+        <h2>Tu Saldo Actual es de $<a id="saldo"></a>.00</h2>
+        <script>
+                saldo=100;
+                var actual;
+                actual=document.getElementById("saldo");
+                actual.innerHTML=saldo;
+        </script>
+        <div class="Abonar">
+            <h4>Seleccione el establecimiento a Depositar</h4>
+              <table class="tableS">
+                  <tr>
+                    <th><input type="image" class="imageA" src="/images/BBVA.png" ></th>
+                    <th><input type="image" class="imageA" src="/images/OXXO.png" ></th>
+                </tr>
+                <tr>
+                    <th><input type="image" class="imageA" src="/images/Walmart.png" ></th>
+                    <th><input type="image" class="imageA" src="/images/banamex.png" ></th>
+                </tr>
+                <tr>
+                    <th><input type="image" class="imageA" src="/images/farmacia.png" ></th>
+                    <th><input type="image" class="imageA" src="/images/7eleven.png" ></th>
+                </tr>
+              </table>  
+
+
+        </div>
+        <table class="tableS">
+            <tr>
+            <th><form method="get" action="/saldo"><button class="buttonS" >Cancelar</button></form></th>
+            <th><form method="get" action="/Deposito"><button id="deposito" class="buttonS">Realizar Deposito</button></form></th>
+            </tr>
+        </table>
+    </div>
+</div>
+    
+</main>
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+</body>
+</html>

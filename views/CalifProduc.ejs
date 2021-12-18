@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <%- include('partials/head'); %>
+
+
+    <style>
+        #form {
+  width: 250px;
+  margin: 0 auto;
+  height: 50px;
+}
+
+#form p {
+  text-align: center;
+}
+
+#form label {
+  font-size: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: grey;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+  color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+  color: orange;
+}
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    <%- include('partials/header2'); %>
+</header>
+<center>
+<div class="jumbotron">
+    <h1>Calificar Producto</h1>
+</div>
+</center>
+
+  <article class="card card-product-list">
+    <div class="card-body">
+    <div class="row">
+      <aside class="col-sm-3">
+        <a href="#" class="img-wrap"><img src="https://res.cloudinary.com/walmart-labs/image/upload/w_225,dpr_auto,f_auto,q_auto:good/mg/gm/1p/images/product-images/img_large/00694105964328-1l.jpg"></a>
+      </aside> <!-- col.// -->
+      <article class="col-sm-6">
+          <a href="#" class="title mt-2 h5">Smartphone Xiaomi Redmi Note 9</a>
+          <div class="rating-wrap mb-3">
+            <small class="label-rating text-muted">132 opiniones</small>
+            <small class="label-rating text-success"> 
+              <i class="fa fa-clipboard-check"></i> 154 comprados </small>
+          </div> <!-- rating-wrap.// -->
+          <p>Descripción.</p>
+          
+      </article> <!-- col.// -->
+      <aside class="col-sm-3">
+          <div class="price-wrap mt-2">
+            <span class="price h5"> $5,489 </span>	
+          </div> <!-- info-price-detail // -->
+
+          <br>
+      </aside> <!-- col.// -->
+    </div> <!-- row.// -->
+    </div> <!-- card-body .// -->
+  </article>
+
+  <article class="card mb-4">
+    <div class="card-body">
+      <form action="">
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <label>Opinion</label>
+            <input type="text" placeholder="Escribe aquí" class="form-control">
+          </div>
+        </div> <!-- row.// -->	
+      </form>
+    </div> <!-- card-body.// -->
+    <center><form>
+      <p class="clasificacion">
+        <input id="radio1" type="radio" name="estrellas" value="5"><!--
+        --><label for="radio1">★</label><!--
+        --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+        --><label for="radio2">★</label><!--
+        --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+        --><label for="radio3">★</label><!--
+        --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+        --><label for="radio4">★</label><!--
+        --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+        --><label for="radio5">★</label>
+      </p>
+    </form></center>
+    </article> <!-- card.// -->
+
+
+
+<br>
+<div class="d-flex justify-center container">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Calificar
+  </button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Has calificado el producto con éxito
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary ">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+
+
+
+
+
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+</body>
+</html>

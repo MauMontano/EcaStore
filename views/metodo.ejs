@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>Metodo de Pago</h1>
+        <div class="saldoD">
+        <h2>Seleccione el metodo de Pago</h2>
+        <table class="tableS">
+            <tr>
+            <th><form method="get" action="/MetodoG"><button class="buttonS" >Efectivo/Saldo</button></form></th>
+            <th><form method="get" action="/TarjetaC"><button class="buttonS">Tarjeta de Credito</button></form></th>
+            </tr>
+        </table>
+    </div>
+</div>
+    
+</main>
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+</body>
+</html>

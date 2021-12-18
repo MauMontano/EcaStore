@@ -1,0 +1,725 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background: #fff;
+	font-family: calibri;
+}
+
+header{
+	background: #4B76F6;
+	width: 100%;
+	box-shadow: 0px 0px 30px #A4A4A4;
+}
+
+#encabezadoH{
+	width: 86%;
+	height: 60px;
+	margin: auto;
+	border: 0px solid #000;
+}
+
+#regresarH{
+	width: 20%;
+	float: left;
+	margin-left: 30px;
+	margin-top: 8px;
+}
+
+#regresarH .botonH{
+	border: 1px solid white;
+	color: black;
+	background: #4B76F6 ;
+	padding: 10px;
+	border-radius: 10px;
+	font-family: 'calibri light';
+	font-size: 17px;
+	color: white;
+}
+
+#regresarH .botonH:hover{
+	color: #ECECEC;
+}
+
+#historial{
+	width: : 80%;
+	height: auto; overflow: hidden;
+	float: left;
+	color: white;
+	font-size: 15px;
+	font-family: Calibri;
+	margin-top: 20px;
+	float: left;
+}
+
+#historial2{
+	width: : 80%;
+	height: auto; overflow: hidden;
+	float: left;
+	color: white;
+	font-size: 15px;
+	font-family: Calibri;
+	margin-top: 20px;
+	float: left;
+}
+
+#buscarH{
+	border-radius: 10px;
+	width: 70%;
+	border: 1px solid black;
+	height: auto; overflow: hidden;
+	border: 0px solid #ccc;
+	margin-bottom: 10px;
+	float: right;
+	margin-top: 10px;
+}
+
+#buscarH input[type="text"]{
+	border: 1px solid #ccc;
+	box-shadow: 0px 0px 5px #ccc inset;
+	padding: 10px 4px;
+	border-radius: 10px;
+	width: 80%;
+}
+
+#buscarH .botonH{
+	border: 1px solid white;
+	color: black;
+	background: #4B76F6 ;
+	padding: 10px;
+	border-radius: 10px;
+	font-family: 'calibri light';
+	font-size: 17px;
+	color: white;
+}
+
+#buscarH .botonH:hover{
+	color: #ECECEC;
+}
+
+
+#principalH{
+	width: 94%;
+	height: auto; overflow: hidden;
+	border: 0px solid;
+	margin: 10px 10px 10px 20px;
+}
+
+#publicacionesH{
+	width: 24%;
+	height: auto; overflow: hidden;
+	border: 0px solid;
+	margin-top: 10px;	
+	float: left;
+}
+
+.postH{
+	width: 95%;
+	height: 400px;
+	padding: 7px;
+	background: #4B76F6;
+	border-left-style: solid;
+	border-left-width: 5px;
+	border-left-color: white;
+	border-radius: 10px;
+	box-shadow: 0px 0px 15px #ccc;
+	margin-bottom: 25px;
+}
+
+#publicacionesH a .TituloH{
+	color: white;
+	font-size: 22px;
+	font-family: 'calibri light';
+	margin-bottom: 10px;
+}
+
+#publicacionesH .Historial-Actual{
+	background: white;
+	color: black;
+	border-radius: 10px;
+}
+
+#publicacionesH .boton-historiales{
+	color: #fff;
+	border: 1px;
+	padding: 0px;
+	text-decoration: none;
+	margin: 20px 20px 25px 20px;
+
+}
+
+#publicacionesH .boton-historiales:hover{
+	background: #fff;
+	color: black;
+}
+
+#Historial-reciente{
+	float: right;
+	width: 70%;
+	border: 1px solid #ccc;
+	height: auto; overflow: hidden;
+	margin-top: 10px;
+}
+
+
+
+#comprasH{
+	border-radius: 10px;
+	width: 30%;
+	border: 0px solid black;
+	height: auto; overflow: hidden;
+	margin-bottom: 20px;
+	float: left;
+	margin-left: 190px;
+}
+
+#comprasH2{
+	border-radius: 10px;
+	width: 30%;
+	border: 1px solid black;
+	height: auto; overflow: hidden;
+	float: left;
+
+}
+
+.encabezado-sidebar{
+	width: 100%;
+	height: 35px;
+	background: #4B76F6;
+	text-align: center;
+	font-size: 19px;
+	font-family: 'calibri light';
+	color: white;
+}
+
+
+.encabezado-sidebar2{
+	width: 100%;
+	height: 35px;
+	background: #4B76F6;
+	text-align: center;
+	font-size: 19px;
+	font-family: 'calibri light';
+	color: white;
+	text-align: center;
+	float: left;
+}
+
+.enlace-sidebar{
+	width: 100%;
+	height: 60px;
+	display: inline-block;
+	text-decoration: none;
+	border-bottom: 0px solid #ccc;
+	padding: 10px 5px;
+	margin-top: 8px;
+}
+
+.enlace-sidebar:hover{
+	background: #f2f2f2;
+}
+
+#imagenH{
+	margin-left: 0px;
+}
+
+#imagenH .img-productoH{
+	width: 200px;
+	height: 80px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+#imagenH2{
+	margin-right: 80px;
+	border: 0px solid black;
+	width: 62%;
+	margin-bottom: 20px;
+}
+
+#imagenH2 .img2-productoH{
+	width: 200px;
+	height: 80px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	float: right;
+	margin-bottom: 20px;
+}
+.saldoD{
+    background-color: azure;
+    width: 90%;
+    border: 40px;
+    padding: 50px;
+    margin: 20px;
+  }
+  
+  .Abonar{
+    background-color: azure;
+    width: 90%;
+    border: 40px;
+    padding: 50px;
+    margin: 20px;
+    border-color: #aaaaaa;
+     border-width: 1px;
+     border-style: solid;
+  }
+  
+  .Ncuenta{
+    background-color: azure;
+    width: 90%;
+    border: 12px;
+    padding: 15px;
+    margin: 10x;
+    border-color: #aaaaaa;
+     border-width: 1px;
+     border-style: solid;
+  }
+  
+  .buttonS{
+    box-shadow:inset 0px 1px 0px 0px #007bff!important;
+      background:linear-gradient(to bottom, #007bff 5%, #007bff 100%);
+      background-color:#007bff!important;
+      border-radius:18px;
+      border:2px solid #124d77;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:13px;
+      padding:7px 24px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #154682;
+  }
+  .buttonS:hover {
+      background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+      background-color:#0061a7;
+  }
+  .buttonS:active {
+      position:relative;
+      top:1px;
+  }
+  
+  .imageA {
+    height: 100px;
+    width: 180px;
+    display:inline-block;
+      cursor:pointer;
+  }
+  
+  .imageA:hover{
+    background:linear-gradient(to bottom, #ffffff 5%, #ffffff 100%);
+      
+  }
+  
+  .imageA:active{
+    position:relative;
+      top:1px;
+  }
+  .tableS{
+    width: 90%;
+    text-align: center;
+    margin: 40px;
+  }
+  
+  .tableC{
+    width: 90%;
+    text-align: center;
+    margin: 40px;
+  }
+  
+  .montoR {
+      box-shadow:inset 0px 1px 3px 0px #007bff!important;
+      background:linear-gradient(to bottom, #007bff 5%, #007bff 100%);
+      background-color:#007bff!important;
+      border-radius:5px;
+    width: 188px;
+      border:1px solid #124d77;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:23px;
+      font-weight:bold;
+      padding:11px 23px;
+      text-decoration:none;
+      text-shadow:0px -1px 0px #154682;
+    margin: 20px;
+  }
+  .montoR:hover {
+      background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+      background-color:#0061a7;
+  }
+  .montoR:active {
+      position:relative;
+      top:1px;
+  }
+/*body {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+  
+  #addProduct{
+    float: inline-end;
+    margin: 0 0 2rem 2rem;
+  }
+  
+  a {
+    color: #00B7FF;
+  }
+  p{
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .cat{
+    position: relative;
+    width: 100%;
+    height: 90%;
+  }
+  
+  .saldoD{
+    background-color: azure;
+    width: 90%;
+    border: 40px;
+    padding: 50px;
+    margin: 20px;
+  }
+  
+  .Abonar{
+    background-color: azure;
+    width: 90%;
+    border: 40px;
+    padding: 50px;
+    margin: 20px;
+    border-color: #aaaaaa;
+     border-width: 1px;
+     border-style: solid;
+  }
+  
+  .Ncuenta{
+    background-color: azure;
+    width: 90%;
+    border: 12px;
+    padding: 15px;
+    margin: 10x;
+    border-color: #aaaaaa;
+     border-width: 1px;
+     border-style: solid;
+  }
+  
+  .buttonS{
+    box-shadow:inset 0px 1px 0px 0px #007bff!important;
+      background:linear-gradient(to bottom, #007bff 5%, #007bff 100%);
+      background-color:#007bff!important;
+      border-radius:18px;
+      border:2px solid #124d77;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:13px;
+      padding:7px 24px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #154682;
+  }
+  .buttonS:hover {
+      background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+      background-color:#0061a7;
+  }
+  .buttonS:active {
+      position:relative;
+      top:1px;
+  }
+  
+  .imageA {
+    height: 100px;
+    width: 180px;
+    display:inline-block;
+      cursor:pointer;
+  }
+  
+  .imageA:hover{
+    background:linear-gradient(to bottom, #ffffff 5%, #ffffff 100%);
+      
+  }
+  
+  .imageA:active{
+    position:relative;
+      top:1px;
+  }
+  .tableS{
+    width: 90%;
+    text-align: center;
+    margin: 40px;
+  }
+  
+  .tableC{
+    width: 90%;
+    text-align: center;
+    margin: 40px;
+  }
+  
+  .montoR {
+      box-shadow:inset 0px 1px 3px 0px #007bff!important;
+      background:linear-gradient(to bottom, #007bff 5%, #007bff 100%);
+      background-color:#007bff!important;
+      border-radius:5px;
+    width: 188px;
+      border:1px solid #124d77;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:23px;
+      font-weight:bold;
+      padding:11px 23px;
+      text-decoration:none;
+      text-shadow:0px -1px 0px #154682;
+    margin: 20px;
+  }
+  .montoR:hover {
+      background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+      background-color:#0061a7;
+  }
+  .montoR:active {
+      position:relative;
+      top:1px;
+  }
+  
+  
+  }
+  
+  #encabezadoH{
+      width: 86%;
+      height: 60px;
+      margin: auto;
+      border: 0px solid #000;
+  }
+  
+  #regresarH{
+      width: 20%;
+      float: left;
+      margin-left: 30px;
+      margin-top: 8px;
+  }
+  
+  #regresarH .botonH{
+      border: 1px solid white;
+      color: black;
+      background: #4B76F6 ;
+      padding: 10px;
+      border-radius: 10px;
+      font-family: 'calibri light';
+      font-size: 17px;
+      color: white;
+  }
+  
+  #regresarH .botonH:hover{
+      color: #ECECEC;
+  }
+  
+  #historial{
+      width: : 80%;
+      height: auto; overflow: hidden;
+      float: left;
+      color: white;
+      font-size: 15px;
+      font-family: Calibri;
+      margin-top: 20px;
+      float: left;
+  }
+  
+  #historial2{
+      width: : 80%;
+      height: auto; overflow: hidden;
+      float: left;
+      color: white;
+      font-size: 15px;
+      font-family: Calibri;
+      margin-top: 20px;
+      float: left;
+  }
+  
+  #buscarH{
+      border-radius: 10px;
+      width: 70%;
+      border: 1px solid black;
+      height: auto; overflow: hidden;
+      border: 0px solid #ccc;
+      margin-bottom: 10px;
+      float: right;
+      margin-top: 10px;
+  }
+  
+  #buscarH input[type="text"]{
+      border: 1px solid #ccc;
+      box-shadow: 0px 0px 5px #ccc inset;
+      padding: 10px 4px;
+      border-radius: 10px;
+      width: 80%;
+  }
+  
+  #buscarH .botonH{
+      border: 1px solid white;
+      color: black;
+      background: #4B76F6 ;
+      padding: 10px;
+      border-radius: 10px;
+      font-family: 'calibri light';
+      font-size: 17px;
+      color: white;
+  }
+  
+  #buscarH .botonH:hover{
+      color: #ECECEC;
+  }
+  
+  
+  #principalH{
+      width: 94%;
+      height: auto; overflow: hidden;
+      border: 0px solid;
+      margin: 10px 10px 10px 20px;
+  }
+  
+  #publicacionesH{
+      width: 24%;
+      height: auto; overflow: hidden;
+      border: 0px solid;
+      margin-top: 10px;	
+      float: left;
+  }
+  
+  .postH{
+      width: 95%;
+      height: 400px;
+      padding: 7px;
+      background: #4B76F6;
+      border-left-style: solid;
+      border-left-width: 5px;
+      border-left-color: white;
+      border-radius: 10px;
+      box-shadow: 0px 0px 15px #ccc;
+      margin-bottom: 25px;
+  }
+  
+  #publicacionesH a .TituloH{
+      color: white;
+      font-size: 22px;
+      font-family: 'calibri light';
+      margin-bottom: 10px;
+  }
+  
+  #publicacionesH .Historial-Actual{
+      background: white;
+      color: black;
+      border-radius: 10px;
+  }
+  
+  #publicacionesH .boton-historiales{
+      color: #fff;
+      border: 1px;
+      padding: 0px;
+      text-decoration: none;
+      margin: 20px 20px 25px 20px;
+  
+  }
+  
+  .table-responsive tbody tr {
+    cursor: pointer;
+  }
+  .table-responsive .table thead tr th {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .table-responsive .table tbody tr td {
+    padding-top: 15px;
+    padding-bottom: 10px;
+  }
+  
+  .Nnumero{
+    width: 70px;
+  }
+  
+  footer{
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+  }*/
+
+  #divCarousel{
+    height: 25rem;
+  }
+  .prodImg{
+    height: 12.5rem;
+  }
+  
+  /*Product details*/
+  .gallery-wrap .img-big-wrap {
+    margin-bottom: 10px;
+    border-radius: 0.37rem;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.gallery-wrap .img-big-wrap a {
+    text-align: center;
+    display: block;
+    padding: 1rem;
+}
+
+.gallery-wrap .img-big-wrap img {
+    height: 450px;
+    width: auto;
+    display: inline-block;
+    cursor: zoom-in;
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+}
+
+.gallery-wrap .thumbs-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: zoom-in;
+}
+
+.gallery-wrap .thumbs-wrap {
+    text-align: center;
+}
+
+.gallery-wrap .thumbs-wrap .item-thumb {
+    width: 90px;
+    height: 95px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin: 3px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.no-gutters>.col,
+.no-gutters>[class*=col-] {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.border-right {
+    border-right: 1px solid #e4e4e4 !important;
+}
+
+.content-body {
+    flex: 1 1 auto;
+    padding: 2rem 2.3rem;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('partials/header2'); %>
+</header>
+
+<main>
+    <div class="bg-light ">
+        <div class="d-flex justify-content-center">
+            <img class="mt-5"src="/images/logoAzul.png" width="55" height="50" alt="">
+            <h1 class="mt-5 text-primary"><%= title %></h1>
+        </div>
+        <div class="container text-center text-secondary">
+            <p>Digitienda es una plataforma en la que puedes 
+                vender y comprar productos de la manera más sencilla. 
+                ¡Únete<br> a esta gran comunidad y realiza tu primera 
+                compra o vende tu primer producto1  
+            </p>
+            <h5 class="font-weight-bold">Categorías más buscadas</h5>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-2 col-xs-3">
+                <img class="cat img-fluid img-responsive img-thumbnail" src="/images/shoes.jpeg"alt="Calzado">
+            </div>
+            <div class="col-md-2 col-xs-2">
+                <img class="cat img-fluid img-responsive img-thumbnail" src="/images/electronic.jpeg" alt="">
+            </div>
+            <div class="col-md-2 col-xs-2">
+                <img class="cat img-fluid img-responsive img-thumbnail" src="/images/toys.jpeg" alt="">
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <form method="get" action="/cart">
+                <button type="submit" class="btn btn-primary btn-lg mb-5">Comprar ahora</button>
+            </form>
+        </div>
+        <div id="addProduct">
+            <button class="btn btn-primary ml-5 mb-5" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="bi bi-plus"></i>Publicar producto</button>
+        </div>
+        <div class="bg-white">
+            <br>
+            <br>
+            <h4 class="ml-5 mb-5">Explora la variedad de nuestros productos</h3>
+            <div class="row d-flex justify-content-center bg-white">
+                <% products.forEach(function(product) { %>
+                    <div class="card mr-5 mb-5" style="width: 18rem;">
+                        <img class="card-img-top" src="/images/product.jpeg" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title"><strong><%= product.name %></strong></h5>
+                          <p class="card-text"><%= product.description %></p>
+                          <p class="card-text">Precio: $<%= product.price %></p>
+                          <a href="/Producto" class="btn btn-primary">Ver producto</a>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+        
+    </div>
+    <!--Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Publica un producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Nombre del producto:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Descripción:</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Precio del producto(MXN):</label>
+                    <input type="number" class="form-control" id="recipient-name">
+                </div>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="/busqueda1" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Categoría
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#">Calzado</a>
+                      <a class="dropdown-item" href="#">Electrónicos</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Juguetes</a>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div>
+                    <form>
+                        <div class="form-group">
+                          <label for="exampleFormControlFile1">Example file input</label>
+                          <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                    </form>
+                </div>
+                <div class="addProduct">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary ml-5">Publicar producto</button>
+                </div>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+</body>
+</html>

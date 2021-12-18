@@ -1,0 +1,56 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+div#general
+{
+    margin:auto;
+    width:960px;
+    height:800px;
+    background-color:red;
+    
+}
+
+.menu
+{  
+    list-style: none;
+    padding: 0;
+    background: #007AFF;
+    width: 100%;
+    height: 80px;
+    margin: auto;
+}
+
+.menu li a
+{
+    text-decoration> none;
+    color: white;
+    padding: 20px;
+    display: block;
+    
+}
+
+.menu li
+{
+    display: inline-block;
+    text-align:center;
+}
+
+botonContinue
+{
+    width: 30px;
+}
+
+a#botonContinue
+{
+    background-color:#007AFF;
+    font-size: 25;
+    color: white;
+}
+
+.producto li
+{  
+    display: inline-block;
+    text-align:center;
+}

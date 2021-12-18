@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head'); %>
+</head>    
+<body>
+  <header>
+      <%- include('partials/header'); %>
+  </header>
+  <main class="d-flex justify-content-center">
+    <div class="card mt-4 mb-5">
+      <article>
+        <div class="d-flex justify-content-center">
+          <img class="mt-5"src="/images/logoAzul.png" width="55" height="50" alt="">
+        </div>
+        <div class="d-flex justify-content-center">
+          <h4 class="card-title">Registro de usuario</h5>
+        </div>
+        <form onsubmit='return sendEmail(this, event);' method='post' class="card-body">
+            <div class="form-row">
+              <div class="col form-group">
+                <label>Nombre(s)*</label>
+                <input id="name" type="text" class="form-control" placeholder="" >
+              </div> <!-- form-group end.// -->
+              <div class="col form-group">
+                <label>Apellido paterno*</label>
+                  <input id="apat" type="text" class="form-control" placeholder="" >
+              </div> <!-- form-group end.// -->
+              <div class="col form-group">
+                <label>Apellido materno*</label>
+                  <input id="amat" type="text" class="form-control" placeholder="" >
+              </div> <!-- form-group end.// -->
+            </div> <!-- form-row end.// -->
+            <div class="form-row">
+              <div class="col form-group">
+                <label>correo electrónico*</label>
+                <input id="email" type="text" class="form-control" placeholder="Ej. user@digitienda.com" >
+                <small class="form-text text-muted">Formato email válido: nombreUsuario@nombreHost.dominio</small>
+              </div> <!-- form-group end.// -->
+              <div class="col form-group">
+                <label>Teléfono</label>
+                <input id="phone" type="text" class="form-control" placeholder="Ej. 5567653745" >
+                <small class="form-text text-muted">10 dígitos numéricos. No colocar extensión</small>
+              </div> <!-- form-group end.// -->
+              <div class="col form-group">
+                <label>Contraseña*</label>
+                <input id="password" type="password" class="form-control" placeholder="" >
+                <small class="form-text text-muted">Mínimo 8 caracteres, al menos una letra, un número y un caracter especial</small>
+              </div> <!-- form-group end.// -->
+            </div>
+            <div>
+              <label>Rol de usuario*</label>
+            </div>
+            <div class="form-group">
+              <label class="custom-control custom-radio custom-control-inline">
+                <input id="buyerUser" class="custom-control-input" checked="" type="radio" name="gender" value="option2" data-toggle="collapse" data-target="#collapseExample">
+                <span class="custom-control-label"> Comprador </span>
+              </label>
+              <label class="custom-control custom-radio custom-control-inline">
+                <input id="sellerUser" class="custom-control-input" type="radio" name="gender" value="option1" data-toggle="collapse" data-target="#collapseExample">
+                <span class="custom-control-label"> Vendedor </span>
+              </label>
+            </div> <!-- form-group end.// -->
+            <div class="form-group">
+              <div class="collapse" id="collapseExample">
+                <label>RFC*</label>
+                <div class="md-form md-outline mb-0">
+                  <input id="rfc" type="text" id="RFC" class="form-control font-weight-light"
+                    placeholder="RFC">
+                </div>
+              </div>
+            </div>
+            <div class="form-group"> 
+              <label class="custom-control custom-checkbox"> <input id="terms" type="checkbox" class="custom-control-input"> <div class="custom-control-label"> Estoy de acuerdo con los <a href="#">términos y condiciones</a>  </div> </label>
+            </div> <!-- form-group end.// -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block"> Registrar  </button>
+            </div> <!-- form-group// -->                 
+          </form>
+        </article>
+    </div>
+    <!--Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Verifica tu correo electrónico</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+
+          <form class="was-validated" onsubmit='return registerUser(this, event);' method='post'>
+              <div class="modal-body">
+                  <p>Se ha enviado a tu correo un código de verificación de tu cuenta</p>
+                  <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Código de verificación</label>
+                      <input id="userCode" type="text" class="form-control" id="recipient-name" >
+                  </div>
+              </div>   
+              <div class="modal-footer">
+                  <div class="addProduct">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Elegir otro correo</button>
+                      <button type="submit" class="btn btn-primary">Verificar código</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+    </div>
+  </main>
+  <footer>
+      <%- include('partials/footer'); %>
+  </footer>
+</body>
+</html>

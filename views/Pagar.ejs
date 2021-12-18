@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('partials/buyerHeader'); %>
+</header>
+
+<main class="mt-5 pt-4 ">
+    <div class="container wow fadeIn">
+
+      <!-- Heading -->
+      <h2 class="mb-5 h2 text-center">Confirmar compra</h2>
+
+      <!--Grid row-->
+      <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-8 mb-4">
+          <!--Card-->
+          <div class="card mb-5">
+            <div class="card-body">
+            <!--Card content-->
+              <p class="card-title mb-4"><b><%= username %></b> estás a un paso de que los <span class="text-primary">productos</span> sean tuyos</p>
+              <p class="card-title mb-4">Completa los siguientes campos para culminar con tu compra</p>
+                <div class="">
+                  <h4 class="card-title mb-4">Dirección de entrega</h4>
+                  <% if(directions.length == 0){ %>
+                    <p>Aún no tienes direcciones de envío</p>
+                  <% } else{ %>  
+                    
+                  <% } %>
+                  <form id="directionForm">
+                    <% directions.forEach(function(direction) { %>
+                      <div class="mb-2 d-flex justify-content-around  bg-white" style="box-shadow: 2px 2px 7px 0.5px rgba(0, 0, 0, 0.2);">
+
+                        <div class="mt-5">
+                          <input id="<%= direction.id %>" class="dirRatio" type="radio" name="radioDirName"/>
+                        </div>
+                        <div>
+                          <p class="mt-4 text-muted"><span><i class="bi bi-geo-alt"></i></span> <%= direction.street %> MZ <%= direction.numExt %>, <%= direction.colony %> - <%= direction.muni %> <%= direction.region %> - <%= direction.state %> C.P <%= direction.cp %></p>
+                          <p class="mt-4 text-muted"><i class="bi bi-person"></i> <%= direction.contactName %> - <%= direction.contactPhone %> </p>
+                        </div>
+                        <div>
+                          <!--<button type="button" class="btn btn-light text-primary mt-3">
+                            <i class="bi bi-pencil-fill"></i> Editar </button>-->
+                        </div>
+                      </div>
+                    <% }); %>
+                  </form>                                    
+                </div>
+                <div class="mt-4">
+                  <div class="">
+                    <h4 class="card-title mb-4">Método de pago</h4>
+                    <div class="d-flex justify-content-around  bg-white">
+  
+                      <div class="mt-4">
+                        
+                      </div>
+                      <div>
+                        <p class="mt-4 text-primary">Número de Tarjeta</p>
+                      </div>
+                      <div>
+                        <p class="mt-4 text-primary">Propietario</p>
+                      </div>
+                      <div>
+                        <!--<button type="button" class="btn btn-light text-primary mt-3">
+                          <i class="bi bi-pencil-fill"></i> Editar </button>-->
+                      </div>
+                    </div>
+                    <form action="">
+                    <% if(methods.length == 0){ %>
+                      <p>Aún no tienes métodos de pago </p>
+                    <% } else{ %>  
+                      
+                    <% } %>
+                    <% methods.forEach(function(method) { %>
+                      <div class="mb-2 d-flex justify-content-around  bg-white" style="box-shadow: 2px 2px 7px 0.5px rgba(0, 0, 0, 0.2);">
+  
+                        <div class="mt-4">
+                          <input id="<%= method.id %>" class="methodRatio" type="radio" name="radios" />
+                        </div>
+                        <div>
+                          <p class="mt-4 text-muted"><%= method.number%>  </p>
+                        </div>
+                        <div>
+                          <p class="mt-4 text-muted"><%= method.ownerName%>  </p>
+                        </div>
+                        <div>
+                          <!--<button type="button" class="btn btn-light text-primary mt-3">
+                            <i class="bi bi-pencil-fill"></i> Editar </button>-->
+                        </div>
+                      </div>
+                    <% }); %>
+                    </form>                  
+                  </div> <!-- card-body.// -->
+                </div> <!-- card .// -->
+                 
+              </div> 
+              <!-- ============================ COMPONENT DELIVERY END.// ================================= -->
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  <label for="cc-expiration"></label>   
+              </div>
+              </div>
+              <div class="container">
+                <button type="button" onclick="payCart()" class="mb-5 btn btn-primary btn-lg btn-block">Pagar</button>
+              </div>
+          </div>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-4 mb-4">
+
+          <!-- Heading -->
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Tu carrito</span>
+            <span class="badge badge-primary badge-pill"><%= prods.length %></span>
+          </h4>
+
+          <!-- Cart -->
+          <ul class="list-group mb-3 z-depth-1">
+            <% prods.forEach(function(product) { %>
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 id="<%= product.id %>" class="productQuantity my-0"><%= product.quantity %></h6>
+                  <h6 class="my-0"><%= product.name %></h6>
+                  <h6></h6>
+                  <small class="text-muted"><%= product.description %></small>
+                </div>
+                <span class="text-muted">$<%= product.price*product.quantity %></span>
+              </li>
+            <% }); %>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total</span>
+              <strong>$<%= totalPrice %></strong>
+            </li>
+          </ul>
+          <!-- Cart -->
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+
+    </div>
+  </main>
+
+
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+<script src="/javascripts/cart.js" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

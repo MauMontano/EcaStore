@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <a class="navbar-brand" href="/home">
+    <img src="/images/logoBlanco.png" width="55" height="50" alt="">
+  </a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <form class="form-inline my-2 my-lg-0" action="/busqueda1">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar producto" aria-label="Search">
+          <button class="btn btn-outline-light my-2 my-sm-0 text-light" type="submit">Buscar</button>
+        </form>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-light" href="/busqueda1" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categorías
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Calzado</a>
+          <a class="dropdown-item" href="/busqueda1">Electrónicos</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Juguetes</a>
+        </div>
+      </li>
+    </ul>
+    <a class="btn text-light" href="/">Inicio <span class="sr-only">(current)</span></a>
+    <a class="btn text-light" href="/users/login">Iniciar sesión</a>
+    <a class="btn text-light" href="/users/register">Registrarse</a>
+    <form action="/users/login">
+      <button class="btn btn-primary"><i class="bi bi-cart-plus"></i>Carrito</button>
+    </form>
+  </div>
+</nav>

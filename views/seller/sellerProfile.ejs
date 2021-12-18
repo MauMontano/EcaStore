@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('../partials/sellerHeader'); %>
+</header>
+
+<main>
+    <div class="wrapper bg-white mt-sm-5">
+        <h4 class="pb-4 border-bottom align-center">Perfil de Usuario</h4>
+            <div class="d-flex justify-content-center">
+                <img class="mt-5"src="/images/logoAzul.png" width="55" height="50" alt="">
+                <h1 class="mt-5 text-primary"><%= title %></h1>
+            </div>
+        
+        <div class="py-2">
+            <div class="row py-2">
+                <div class="col-md-6"> <label for="firstname">Nombre</label> <input type="text" class="bg-light form-control" placeholder="Miguel"> </div>
+                <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Apellido</label> <input type="text" class="bg-light form-control" placeholder="Diaz"> </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-md-6"> <label for="email">E-mail</label> <input type="text" class="bg-light form-control" placeholder="steve_@email.com"> </div>
+                <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Telefono</label> <input type="tel" class="bg-light form-control" placeholder="55-20-25-38-97"> </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-md-6"> <label for="password">Contraseña</label> <input type="text" class="bg-light form-control" placeholder="************"> </div>
+               
+                <div class="col-md-6"> <label for="RFC">RFC</label> <input type="text" class="bg-light form-control" placeholder="RFC"> </div>
+               
+            </div>
+            <div class="py-3 pb-4 border-bottom"> <button class="btn btn-primary mr-3">Guardar Cambios</button> <button class="btn border button">Cancelar</button> </div>
+            <div class="d-sm-flex align-items-center pt-3" id="deactivate">
+                <div> <b>Desactivar tu cuenta</b>
+                    <p>Este proceso eliminara todos tus datos de nuestros sistemas.</p>
+                </div>
+                <div class="ml-auto"> <button class="btn danger">Dar de baja</button> </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</main>
+<footer>
+    <%- include('../partials/footerSeller'); %>
+</footer>
+</body>
+</html>
+
+
+<style lang="css">
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: aliceblue
+}
+
+.wrapper {
+    padding: 30px 50px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    margin: 10px auto;
+    max-width: 600px
+}
+
+h4 {
+    letter-spacing: -1px;
+    font-weight: 400
+}
+
+
+#deactivate p {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 10px;
+    text-align: justify
+}
+
+#img-section b,
+#img-section button,
+#deactivate b {
+    font-size: 14px
+}
+
+label {
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #777;
+    padding-left: 3px
+}
+
+.form-control {
+    border-radius: 10px
+}
+
+input[placeholder] {
+    font-weight: 500
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1.5px solid #0779e4
+}
+
+select {
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    height: 40px;
+    padding: 5px 10px
+}
+
+select:focus {
+    outline: none
+}
+
+.button {
+    background-color: #fff;
+    color: #0779e4
+}
+
+.button:hover {
+    background-color: #0779e4;
+    color: #fff
+}
+
+.btn-primary {
+    background-color: #0779e4
+}
+
+.danger {
+    background-color: #fff;
+    color: #e20404;
+    border: 1px solid #ddd
+}
+
+.danger:hover {
+    background-color: #e20404;
+    color: #fff
+}
+
+@media(max-width:576px) {
+    .wrapper {
+        padding: 25px 20px
+    }
+
+    #deactivate {
+        line-height: 18px
+    }
+}
+</style>

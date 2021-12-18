@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <%- include('partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>Nueva Tarjeta de Credito</h1>
+        <div class="saldoD">
+        <h2>Ingrese  los datos de su Tarjeta de Credito </h2>
+        <div class="Abonar">
+       
+        <h4>Numero de Tarjeta</h4>
+        <div class="Ncuenta">
+            <h5><input class="Nnumero" min="1000" max="9999" maxlength="4" type="text"/> - <input class="Nnumero" maxlength="4" min="1000" max="9999" type="text"/> - <input class="Nnumero" maxlength="4" min="1000" max="9999" type="text"/> - <input class="Nnumero" maxlength="4" min="1000" max="9999" type="text"/><h5>
+        </div>
+        <h4>Numero de Seguridad</h4>
+        <div class="Ncuenta">
+            <h5><input class="Nnumero" min="100" placeholder="CVV" max="999" maxlength="3" type="text"/><h5>
+            </div>
+        <h4>Fecha de Vencimiento</h4>
+            <div class="Ncuenta">
+                <h5><input class="Nnumero" min="00" max="99" placeholder="MM"maxlength="2" type="text" />/<input class="Nnumero" min="00" max="99" placeholder="YY"maxlength="2" type="text" /><h5>
+                </div>
+    </div>
+    </div>
+    <table class="tableS">
+            <tr>
+            <th><form method="get" action="/TarjetaC"><button class="buttonS" >Cancelar</button></form></th>
+            <th><form method="get" action="/TarjetaC"><button class="buttonS">Guardar</button></form></th>
+            </tr>
+        </table>
+</div>
+    
+</main>
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+</body>
+</html>

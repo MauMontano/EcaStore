@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>Saldo</h1>
+        <div class="saldoD">
+        <h2>Tu Saldo Actual es de $<a id="saldo"></a>.00</h2>
+        <script>
+                saldo=100;
+                var actual;
+                actual=document.getElementById("saldo");
+                actual.innerHTML=saldo;
+        </script>
+        <table class="tableS">
+            <tr>
+            <th><form method="get" action="/abonar"><button class="buttonS" >ABONAR SALDO</button></form></th>
+            <th><form method="get" action="/retirar"><button class="buttonS">RETIRAR SALDO</button></form></th>
+            </tr>
+        </table>
+    </div>
+    <div class="saldoD">
+        <h2>Metodo de Pago Elegido = <a id="Metodo"></a></h2>
+        <script>
+                var pago;
+                pago="Tarjeta de Credito"
+                metodo=document.getElementById("Metodo");
+                metodo.innerHTML=pago;
+        </script>
+        <table class="tableS">
+            <tr>
+           <th><form method="get" action="/metodo"><button class="buttonS">METODO DE PAGO</button></form></th>
+            <th><form method="get" action="/borrarM"><button class="buttonS">BORRAR METODO DE PAGO</button></form></th>
+            </tr>
+
+        </table>
+    </div>
+</div>
+    
+</main>
+<footer>
+    <%- include('partials/footer'); %>
+</footer>
+</body>
+</html>
