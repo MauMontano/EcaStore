@@ -6,6 +6,7 @@ const regexPhone = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 const regexRFC = /^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$/;
 const regexPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 var code;
+var storeId;
 
 function generateCode() {
     var code = '';
@@ -15,6 +16,11 @@ function generateCode() {
       code += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return code;
+}
+
+function getStoreId(clicked_id) {
+    storeId = clicked_id;
+    //alert(storeId);
 }
 
 function sendEmail(form, event){
@@ -254,6 +260,112 @@ function sendEmail(form, event){
     }
 }
 
+/**
+ *   Function to register an user
+ * No params 
+ */
+ function updateBuyer(form, event){
+    event.preventDefault();
+    const name = document.getElementById('newName').value;
+    const apat = document.getElementById('newApat').value;
+    const amat = document.getElementById('newAmat').value;
+    const email = document.getElementById('newEmail').value;
+    var phone = document.getElementById('newPhone').value;
+    const password = document.getElementById('newPassword').value;
+    if (!regexName.exec(name)) {
+        Toastify({
+            text: "Nombre no válido. Ingresa solo letras",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return;
+    }
+    else if(phone != ''){
+        if(!regexPhone.exec(phone)){
+            Toastify({
+                text: "Teléfono no válido",
+                backgroundColor: "#e53935",
+                color: "#000000",
+                className: "info",
+                position: "right",
+                gravity: "top"
+            }).showToast();
+            return;
+        }
+    }
+    if (!regexName.exec(apat)) {
+        Toastify({
+            text: "Apellido paterno no válido. Ingresa solo letras",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return;
+    }
+    if (!regexName.exec(amat)) {
+        Toastify({
+            text: "Apellido materno no válido. Ingresa solo letras",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return;
+    }
+    if (!regexEmail.exec(email)) {
+        Toastify({
+            text: "Email no válido",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return;
+    }
+    if (!regexPassword.exec(password)) {
+        Toastify({
+            text: "Contraseña no válida",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return;
+    }
+    if(phone == ''){
+        phone = 0;
+    }
+    
+    var xhr = new XMLHttpRequest();
+    //open the request
+    xhr.open('POST',"/users/updateBuyer", true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    //sending data
+    xhr.send(JSON.stringify({name: name, apat: apat, amat: amat, email: email, phone: phone , password: password}));
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState == 4 && xhr.status== 200) {
+            //console.log('server answered',this.responseText);
+            let jsonvuelta = JSON.parse(xhr.responseText);//We are parsing the Json gotten to understand it
+            Toastify({
+                text: jsonvuelta.message,
+                backgroundColor: "#43a047",
+                color: "#000000",
+                className: "info",
+                position: "right",
+                gravity: "top"
+            }).showToast();
+        }
+    }
+}
+
 function loginUser(form, event){
     event.preventDefault();
     const email = document.getElementById('email').value;
@@ -342,19 +454,240 @@ function loginUser(form, event){
     }
 }
 /**
+ * Function to register an Address
+ * form: a form with the data
+ * event: The event
+ */
+ function registerAddress(form, event){
+    event.preventDefault();
+    //Getting the attributes
+    var cp = document.getElementById('cp').value;
+    var street = document.getElementById('street').value;
+    var numExt = document.getElementById('numExt').value;
+    var numInt = document.getElementById('numInt').value;
+    var name = document.getElementById('name').value;
+    var phone = document.getElementById('phone').value;
+    var descriptionReference = document.getElementById('descriptionReference').value;
+    if(street == '' || numExt == ''){
+        Toastify({
+            text: "Completa todos los campos requeridos",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return
+    }
+    if(cp != '55000'){
+        Toastify({
+            text: "Código Postal Inválido",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return
+    }
+    if((descriptionReference.length > 1 && descriptionReference.length < 10) || descriptionReference.length > 50){
+        Toastify({
+            text: "La descripción debe tener de 10-50 caracteres",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return;
+    }
+    //alert(carac1);
+    //alert("Categorie: "+category);
+    //alert("IMG1: "+img1Name);
+    //alert("IMG2: "+img2Name);
+    var xhr = new XMLHttpRequest();
+    //open the request
+    xhr.open('POST',"/users/registerAddress", true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    //sending data
+    xhr.send(JSON.stringify({street: street, numExt: numExt, numInt: numInt, name: name, phone: phone, descriptionReference: descriptionReference }));
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState == 4 && xhr.status== 200) {
+            //console.log('server answered',this.responseText);
+            let jsonvuelta = JSON.parse(xhr.responseText);//We are parsing the Json gotten to understand it
+            //show alert
+            Toastify({
+                text: jsonvuelta.message,
+                backgroundColor: "#43a047",
+                color: "#000000",
+                className: "info",
+                position: "right",
+                gravity: "top"
+            }).showToast();
+            //M.toast({html: jsonvuelta.mensaje});//toast is a materialie's property
+        }
+    }
+}
+/**
+ * Function to register an Address
+ * form: a form with the data
+ * event: The event
+ */
+ function registerPaymentMethod(form, event){
+    event.preventDefault();
+    //Getting the attributes
+    var ownerName = document.getElementById('ownerName').value;
+    var numCard = document.getElementById('numCard').value;
+    var cvv = document.getElementById('cvv').value;
+    var month = document.getElementById('month').value;
+    var year = document.getElementById('year').value;
+    const select_bank = document.getElementById('bank');
+    const bankId = select_bank.options[select_bank.selectedIndex].value;
+    if(ownerName == '' || numCard == '' || cvv == null || month == null || year == null){
+        Toastify({
+            text: "Completa todos los campos requeridos",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return
+    }
+    //alert(carac1);
+    //alert("Categorie: "+category);
+    //alert("IMG1: "+img1Name);
+    //alert("IMG2: "+img2Name);
+    var xhr = new XMLHttpRequest();
+    //open the request
+    xhr.open('POST',"/users/registerPaymentMethod", true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    //sending data
+    xhr.send(JSON.stringify({ownerName: ownerName, numCard: numCard, cvv: cvv, month: month, year: year, bankId: bankId }));
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState == 4 && xhr.status== 200) {
+            //console.log('server answered',this.responseText);
+            let jsonvuelta = JSON.parse(xhr.responseText);//We are parsing the Json gotten to understand it
+            //show alert
+            Toastify({
+                text: jsonvuelta.message,
+                backgroundColor: "#43a047",
+                color: "#000000",
+                className: "info",
+                position: "right",
+                gravity: "top"
+            }).showToast();
+            //M.toast({html: jsonvuelta.mensaje});//toast is a materialie's property
+        }
+    }
+}
+/**
+ * Function to register a Store
+ * form: a form with the data
+ * event: The event
+ */
+ function registerStore(form, event){
+    event.preventDefault();
+    //Getting the attributes
+    const name = document.getElementById('name').value;
+    const select_category = document.getElementById('category');
+    const category = select_category.options[select_category.selectedIndex].value;
+    const description = document.getElementById('description').value;
+    var imgPath = document.getElementById("img").value.split("\\");
+    var img = imgPath[imgPath.length-1];
+    var phone = document.getElementById('phone').value;
+    var email = document.getElementById('email').value;
+    var cp = document.getElementById('cp').value;
+    var street = document.getElementById('street').value;
+    var numExt = document.getElementById('numExt').value;
+    var numInt = document.getElementById('numInt').value;
+    var descriptionReference = document.getElementById('descriptionReference').value;
+    if(name == '' || description == '' || phone == '' || email == '' || street == ''){
+        Toastify({
+            text: "Completa todos los campos requeridos",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return
+    }
+    if(cp != '55000'){
+        Toastify({
+            text: "Código Postal Inválido",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return
+    }
+    if (!regexName.exec(name)) {
+        Toastify({
+            text: "Nombre del producto no válido. Ingresa solo letras",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return;
+    }
+    if(description.length < 10 || description.length > 150){
+        Toastify({
+            text: "La descripción debe tener de 10-50 caracteres",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return;
+    }
+    //alert(carac1);
+    //alert("Categorie: "+category);
+    //alert("IMG1: "+img1Name);
+    //alert("IMG2: "+img2Name);
+    var xhr = new XMLHttpRequest();
+    //open the request
+    xhr.open('POST',"/users/registerStore", true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    //sending data
+    xhr.send(JSON.stringify({name: name, category: category, description: description, img: img, phone: phone, email: email, street: street, numExt: numExt, numInt: numInt, descriptionReference: descriptionReference}));
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState == 4 && xhr.status== 200) {
+            //console.log('server answered',this.responseText);
+            let jsonvuelta = JSON.parse(xhr.responseText);//We are parsing the Json gotten to understand it
+            //show alert
+            Toastify({
+                text: jsonvuelta.message,
+                backgroundColor: "#43a047",
+                color: "#000000",
+                className: "info",
+                position: "right",
+                gravity: "top"
+            }).showToast();
+            //M.toast({html: jsonvuelta.mensaje});//toast is a materialie's property
+        }
+    }
+}
+/**
  * Function to register a Product
  * form: a form with the data
  * event: The event
  */
 function registerProduct(form, event){
     event.preventDefault();
+    //alert(storeId);
     //Getting the attributes
     const name = document.getElementById('name').value;
     const description = document.getElementById('description').value;
     const price = document.getElementById('price').value;
     const stock = document.getElementById('stock').value;
-    const select_category = document.getElementById('category');
-    const category = select_category.options[select_category.selectedIndex].value;
+    //const select_category = document.getElementById('category');
+    //const category = select_category.options[select_category.selectedIndex].value;
     if(name == '' || description == '' || price == '' || stock == ''){
         Toastify({
             text: "Completa todos los campos requeridos",
@@ -409,7 +742,7 @@ function registerProduct(form, event){
     xhr.open('POST',"/users/registerProduct", true);
     xhr.setRequestHeader("Content-type", "application/json");
     //sending data
-    xhr.send(JSON.stringify({name: name, description: description, carac1: carac1 , carac2: carac2, carac3: carac3, category: category, price: price, stock: stock, img1: img1Name, img2: img2Name, img3: img3Name, img4: img4Name}));
+    xhr.send(JSON.stringify({storeId:storeId, name: name, description: description, carac1: carac1 , carac2: carac2, carac3: carac3, price: price, stock: stock, img1: img1Name, img2: img2Name, img3: img3Name, img4: img4Name}));
     xhr.onreadystatechange = function(){
         if (xhr.readyState == 4 && xhr.status== 200) {
             //console.log('server answered',this.responseText);
@@ -427,6 +760,84 @@ function registerProduct(form, event){
         }
     }
 }
+/**
+ * Function to update a Product
+ * form: a form with the data
+ * event: The event
+ */
+ function updateProduct(form, event){
+    event.preventDefault();
+    //alert(storeId);
+    //Getting the attributes
+    const productId = document.getElementById('productId').value;
+    const name = document.getElementById('name').value;
+    const description = document.getElementById('description').value;
+    const price = document.getElementById('price').value;
+    const stock = document.getElementById('stock').value;
+    //const select_category = document.getElementById('category');
+    //const category = select_category.options[select_category.selectedIndex].value;
+    if (!regexName.exec(name)) {
+        Toastify({
+            text: "Nombre del producto no válido. Ingresa solo letras",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return;
+    }
+    if(description.length < 10 || description.length > 150){
+        Toastify({
+            text: "La descripción debe tener de 10-50 caracteres",
+            backgroundColor: "#e53935",
+            color: "#000000",
+            className: "info",
+            position: "right",
+            gravity: "top"
+        }).showToast();
+        return;
+    }
+    //const img = document.getElementById('img').value;
+    var img1 = document.getElementById("img1").value.split("\\");
+    var img1Name = img1[img1.length-1];
+    var img2 = document.getElementById("img2").value.split("\\");
+    var img2Name = img2[img2.length-1];
+    var img3 = document.getElementById("img3").value.split("\\");
+    var img3Name = img3[img3.length-1];
+    var img4 = document.getElementById("img4").value.split("\\");
+    var img4Name = img4[img4.length-1];
+    var carac1 = document.getElementById('carac1').value;
+    var carac2 = document.getElementById('carac2').value;
+    var carac3 = document.getElementById('carac3').value;
+    //alert(carac1);
+    //alert("Categorie: "+category);
+    //alert("IMG1: "+img1Name);
+    //alert("IMG2: "+img2Name);
+    var xhr = new XMLHttpRequest();
+    //open the request
+    xhr.open('POST',"/users/updateProduct", true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    //sending data
+    xhr.send(JSON.stringify({ productId: productId, name: name, description: description, carac1: carac1 , carac2: carac2, carac3: carac3, price: price, stock: stock, img1: img1Name, img2: img2Name, img3: img3Name, img4: img4Name}));
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState == 4 && xhr.status== 200) {
+            //console.log('server answered',this.responseText);
+            let jsonvuelta = JSON.parse(xhr.responseText);//We are parsing the Json gotten to understand it
+            //show alert
+            Toastify({
+                text: jsonvuelta.message,
+                backgroundColor: "#43a047",
+                color: "#000000",
+                className: "info",
+                position: "right",
+                gravity: "top"
+            }).showToast();
+            //M.toast({html: jsonvuelta.mensaje});//toast is a materialie's property
+        }
+    }
+}
+
 /**
  * Function to register a Product
  * form: a form with the data

@@ -9,17 +9,17 @@ let transporter = nodemailer.createTransport({
     requireTLS: true,
     secure: true,
     auth: {
-        user:"digitienda01@gmail.com",
-        pass:'digitiendaPass'
+        user:"ecastoreofficial@gmail.com",
+        pass:'ecaStore12$'
     }
 });
 let sendEmail ={
     sendData: userdata =>{
         var mailOptions = {
-            from: '"DIGITIENDA"<digitienda01@gmail.com>',
+            from: '"EcaStore"<ecastoreofficial@gmail.com>',
             to: userdata.email,
-            subject: 'Código de verificación para registro de cuenta DIGITIENDA',
-            text: userdata.name+" estás a un paso de formar parte de la gran comunidad de DIGITIENDA, tu código de verificación es el siguiente: "+ userdata.code 
+            subject: 'Código de verificación para registro de cuenta EcaStpre',
+            text: userdata.name+" estás a un paso de formar parte de la gran comunidad de EcaStore, tu código de verificación es el siguiente: "+ userdata.code 
         };
         return new Promise((resolve, reject)=>{
             transporter.sendMail(mailOptions,(error,info)=>{

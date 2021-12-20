@@ -44,22 +44,20 @@
         <div class="bg-white">
             <br>
             <br>
-            <h4 class="ml-5 mb-5"><%= username %> explora la gran variedad de nuestros productos</h4>
+            <h4 class="ml-5 mb-5"><%= username %> explora la gran variedad de comercios y adquiere facilmente diversos productos</h4>
             <p class="ml-5 mb-5"> no olvides <a href="#">registrar un método de pago</a> y <a href="#">una dirección de envío</a> para comenzar a comprar</p>
             <div class="row d-flex justify-content-center bg-white">
-                <% prods.forEach(function(product) { %>
-                    <div class="card mr-5 mb-5" style="width: 18rem;">
-                        <div class="prodImg">
-                            <img class="prodImg card-img-top image-fluid" src="/images/<%= product.img %>" alt="Card image cap">
-                        </div>
-                        <div class="card-body">
-                          <h5 class="card-title"><strong><%= product.name %></strong></h5>
-                          <p class="card-text">vendedor: <%= product.seller %></p>
-                          <p class="card-text">Precio: $<%= product.price %></p>
-                        <a class="btn btn-primary" href="/users/Product/<%= product.id %>">Ver producto</a>
-                        </div>
-                    </div>
-                <% }); %>
+              <% stores.forEach(function(store) { %>
+                  <div class="card mr-5 mb-5" style="width: 18rem;">
+                      <img class="card-img-top" src="/images/<%= store.img %>" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title"><strong><%= store.name %></strong></h5>
+                        <p class="card-text"><%= store.description %></p>
+                        <a class="btn btn-primary" href="/users/buyerStoreProducts/<%= store.id %>">Ver productos</a>
+                        <a href="/Producto" class="btn btn-primary">Ver Detalles</a>
+                      </div>
+                  </div>
+              <% }); %>
             </div>
         </div>
         

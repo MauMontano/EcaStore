@@ -12,26 +12,50 @@
 <main>
     <div class="wrapper bg-white mt-sm-5">
         <h4 class="pb-4 border-bottom align-center">Perfil de Usuario</h4>
-            <div class="d-flex justify-content-center">
-                <img class="mt-5"src="/images/logoAzul.png" width="55" height="50" alt="">
-                <h1 class="mt-5 text-primary"><%= title %></h1>
-            </div>
-        
+        <div class="d-flex justify-content-center">
+            <img class="mt-2" src="/images/logo1.svg" width="125" height="115" alt="">
+        </div>
         <div class="py-2">
-            <div class="row py-2">
-                <div class="col-md-6"> <label for="firstname">Nombre</label> <input type="text" class="bg-light form-control" placeholder="Miguel"> </div>
-                <div class="col-md-6 pt-md-0 pt-3"> <label for="lastname">Apellido</label> <input type="text" class="bg-light form-control" placeholder="Diaz"> </div>
-            </div>
-            <div class="row py-2">
-                <div class="col-md-6"> <label for="email">E-mail</label> <input type="text" class="bg-light form-control" placeholder="steve_@email.com"> </div>
-                <div class="col-md-6 pt-md-0 pt-3"> <label for="phone">Telefono</label> <input type="tel" class="bg-light form-control" placeholder="55-20-25-38-97"> </div>
-            </div>
-            <div class="row py-2">
-                <div class="col-md-6"> <label for="password">Contraseña</label> <input type="text" class="bg-light form-control" placeholder="************"> </div>
-               
-                <div class="col-md-6"> <label for="RFC">RFC</label> <input type="text" class="bg-light form-control" placeholder="RFC"> </div>
-            </div>
-            <div class="py-3 pb-4 border-bottom"> <button class="btn btn-primary mr-3">Guardar Cambios</button> <button class="btn border button">Cancelar</button> </div>
+            <form onsubmit='return updateBuyer(this, event);' method='post' class="card-body">
+                <div class="form-row">
+                    <div class="col form-group">
+                        <label>Nombre</label>
+                        <input id="newName" type="text" class="form-control" value="<%= user.name%>" >
+                        <small class="form-text text-muted"></small>
+                    </div> <!-- form-group end.// -->
+                    <div class="col form-group">
+                        <label>Apellido Paterno</label>
+                        <input id="newApat" type="text" class="form-control" value="<%= user.apat%>" >
+                        <small class="form-text text-muted"></small>
+                    </div> <!-- form-group end.// -->
+                    <div class="col form-group">
+                        <label>Apellido Materno</label>
+                        <input id="newAmat" type="text" class="form-control" value="<%= user.amat%>" >
+                        <small class="form-text text-muted"></small>
+                    </div> <!-- form-group end.// -->
+                </div> <!-- form-row end.// -->
+                
+                <div class="form-row">
+                    <div class="col form-group">
+                        <label>Email</label>
+                        <input id="newEmail" type="text" class="form-control" value="<%= user.email%>" >
+                        <small class="form-text text-muted"></small>
+                    </div> <!-- form-group end.// -->
+                    <div class="col form-group">
+                        <label>Teléfono</label>
+                        <input id="newPhone" type="text" class="form-control" value="<%= user.phone%>" >
+                        <small class="form-text text-muted"></small>
+                    </div> <!-- form-group end.// -->
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input id="newPassword" type="password" class="form-control" value="<%= user.password%>" >
+                    <small class="form-text text-muted"></small>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Modificar Datos</button>
+                </div> <!-- form-group// -->                 
+            </form>
             <div class="d-sm-flex align-items-center pt-3" id="deactivate">
                 <div> <b>Desactivar tu cuenta</b>
                     <p>Este proceso eliminara todos tus datos de nuestros sistemas.</p>
@@ -120,58 +144,60 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form onsubmit='return sendEmail(this, event);' method='post' class="card-body">
+                <form onsubmit='return registerAddress(this, event);' method='post' class="card-body">
                     <div class="form-row">
                       <div class="col form-group">
                         <label for="state">Estado*</label>
-                        <select class="custom-select d-block w-100" id="state" required>
-                          <option value="">Elige un estado...</option>
-                          <option>CDMX</option>
+                        <select class="custom-select d-block w-100" id="state" required readonly>
+                            <option>Estado de México</option>
                         </select>
                       </div> <!-- form-group end.// -->
                       <div class="col form-group">
                         <label>Region</label>
-                        <input id="phone" type="text" class="form-control" placeholder="" >
+                        <input id="region" type="text" class="form-control" placeholder="" >
                         <small class="form-text text-muted"></small>
                       </div> <!-- form-group end.// -->
                     </div> <!-- form-row end.// -->
                     <div class="form-row">
                         <div class="col form-group">
                             <label for="state">Municipio</label>
-                            <select class="custom-select d-block w-100" id="state" required>
-                              <option value="">Elige un municipio...</option>
-                              <option>CDMX</option>
+                            <select class="custom-select d-block w-100" id="state" required readonly>
+                                <option>Ecatepec de Morelos</option>
                             </select>
                         </div> <!-- form-group end.// -->
                         <div class="col form-group">
                             <label for="state">Colonia</label>
-                            <select class="custom-select d-block w-100" id="state" required>
-                              <option value="">Elige una colonia...</option>
-                              <option>CDMX</option>
+                            <select class="custom-select d-block w-100" id="state" required readonly>
+                                <option>San Cristobal Centro</option>
                             </select>
                         </div> <!-- form-group end.// -->
                     </div>
                     <div class="form-row">
                         <div class="col form-group">
                             <label>Calle</label>
-                            <input id="phone" type="text" class="form-control" placeholder="" >
+                            <input id="street" type="text" class="form-control" placeholder="" >
                             <small class="form-text text-muted"></small>
                         </div> <!-- form-group end.// -->
                         <div class="col form-group">
                             <label>Núm. Exterior*</label>
-                            <input id="phone" type="text" class="form-control" placeholder="" >
+                            <input id="numExt" type="text" class="form-control" placeholder="" >
                             <small class="form-text text-muted"></small>
                         </div> <!-- form-group end.// -->
                         <div class="col form-group">
                             <label>Núm. Interior</label>
-                            <input id="phone" type="text" class="form-control" placeholder="" >
+                            <input id="numInt" type="text" class="form-control" placeholder="" >
                             <small class="form-text text-muted"></small>
                         </div> <!-- form-group end.// -->
                     </div>
                     <div class="form-row">
                         <div class="col form-group">
-                            <label>Nombre de contacto</label>
-                            <input id="phone" type="text" class="form-control" placeholder="" >
+                            <label>CP</label>
+                            <input id="cp" type="text" class="form-control" placeholder="" value="55000" readonly >
+                            <small class="form-text text-muted"></small>
+                        </div> <!-- form-group end.// -->
+                        <div class="col form-group">
+                            <label>Nombre de contacto*</label>
+                            <input id="name" type="text" class="form-control" placeholder="" >
                             <small class="form-text text-muted"></small>
                         </div> <!-- form-group end.// -->
                         <div class="col form-group">
@@ -179,6 +205,11 @@
                             <input id="phone" type="text" class="form-control" placeholder="" >
                             <small class="form-text text-muted"></small>
                         </div> <!-- form-group end.// -->
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Descripción de Referencia*</label>
+                        <textarea id="descriptionReference" class="form-control" id="message-text"></textarea>
+                        <small class="form-text text-muted">10-150 palabras</small>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block"> Registrar  </button>
@@ -203,11 +234,61 @@
           </button>
         </div>
         <div class="modal-body">
-          ...
+            <form onsubmit='return registerPaymentMethod(this, event);' method='post' class="card-body">
+                <div class="form-row">
+                    <div class="col form-group">
+                        <label>Nombre del propietario</label>
+                        <input id="ownerName" type="text" class="form-control" placeholder="" >
+                        <small class="form-text text-muted"></small>
+                    </div> 
+                    <div class="col form-group">
+                        <label>Número de tarjeta(18 dígitos)</label>
+                        <input id="numCard" type="text" class="form-control" placeholder="" >
+                        <small class="form-text text-muted"></small>
+                    </div> 
+                </div>
+                <div class="form-row">
+                    <div class="col form-group">
+                        <label>CVV</label>
+                        <input id="cvv" type="number" class="form-control" placeholder="" >
+                        <small class="form-text text-muted"></small>
+                    </div> <!-- form-group end.// -->
+                    <div class="col form-group">
+                        <label>Mes de Vencimiento</label>
+                        <input id="month" type="text" class="form-control" placeholder="" >
+                        <small class="form-text text-muted"></small>
+                    </div> <!-- form-group end.// -->
+                    <div class="col form-group">
+                        <label>Año de Vencimiento</label>
+                        <input id="year" type="text" class="form-control" placeholder="" >
+                        <small class="form-text text-muted"></small>
+                    </div> <!-- form-group end.// -->
+                </div> 
+                <div class="form-row">
+                    <div class="col form-group">
+                        <label for="state">Banco</label>
+                        <select class="custom-select d-block w-100" id="bank" required readonly>
+                            <option value="1">BBVA</option>
+                            <option value="2">Banamex</option>
+                            <option value="3">Santander</option>
+                            <option value="4">ScotiaBank</option>
+                            <option value="5">Banorte</option>
+                            <option value="6">HSBC</option>
+                            <option value="7">Banco Azteca</option>
+                            <option value="8">Banjercito</option>
+                            <option value="9">American Express</option>
+                            <option value="10">Banco Inbursa</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Registrar  </button>
+                </div> <!-- form-group// -->                 
+            </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button> -->
         </div>
       </div>
     </div>

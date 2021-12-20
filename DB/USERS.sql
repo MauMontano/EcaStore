@@ -1,5 +1,5 @@
-CREATE USER 'digiUser'@localhost IDENTIFIED BY 'digitienda';
+CREATE USER 'ecaUser'@localhost IDENTIFIED BY 'ecaStore';
 
-GRANT ALL PRIVILEGES ON Digitienda.* TO 'digiUser'@localhost;
+GRANT ALL PRIVILEGES ON EcaStore.* TO 'ecaUser'@localhost;
 
 FLUSH PRIVILEGES;

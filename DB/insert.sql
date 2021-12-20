@@ -1,4 +1,4 @@
-use digitienda;
+use EcaStore;
 
 insert into Comprador values(1,"Jorge","Cortes","Balbuena","jcortesbal@gmail.com",5512345678,"contra12$");
 insert into Comprador values(2,"Mauricio","Montaño","Sanchez","licantroposkate@gmail.com",5500000000,"contra12$");
@@ -17,11 +17,24 @@ insert into Vendedor values(5,"Miguel","Contreras","Ortiz","miguelc@gmail.com","
 insert into Vendedor values(6,"Miguel","Aguilar","Campa","miguela@gmail.com","5588888888","contra12$","RFC1122334455");
 insert into Vendedor values(7,"David","Flores","Escalona","david@gmail.com","5599999999","contra12$","RFC2255889944");
 insert into Vendedor values(8,"Daniel","Barajas","Torres","daniel@gmail.com","5558791234","contra12$","RFC447885533");
+insert into Vendedor values(9,"Isabel","Roriguez","Olvera","isabel@gmail.com","5558791234","contra12$","RFC447885533");
+insert into Vendedor values(10,"Marco Antonio","Alvarez","López","marco@gmail.com","5558791234","contra12$","RFC447885533");
 
-insert into Categoria values(1,"Electronicos");
-insert into Categoria values(2,"Calzado");
-insert into Categoria values(3,"Articulos para el hogar");
-insert into Categoria values(4,"Herramientas");
+insert into Categoria values(1,"Cafetería");
+insert into Categoria values(2,"Carnicería");
+insert into Categoria values(3,"Cremería");
+insert into Categoria values(4,"Dulcería");
+insert into Categoria values(5,"Ferretería");
+insert into Categoria values(6,"Florería");
+insert into Categoria values(7,"Fonda");
+insert into Categoria values(8,"Papelería");
+insert into Categoria values(9,"Pollería");
+insert into Categoria values(10,"Tienda de abarrotes");
+insert into Categoria values(11,"Tlapalería");
+insert into Categoria values(12,"Tortillería");
+insert into Categoria values(13,"Verdulería");
+insert into Categoria values(14,"Vinatería");
+insert into Categoria values(15,"Otra");
 
 insert into Banco values(1,"BBVA Bancomer");
 insert into Banco values(2,"Banamex");
@@ -33,6 +46,8 @@ insert into Banco values(7,"Banco Azteca");
 insert into Banco values(8,"Banjercito");
 insert into Banco values(9,"American Express");
 insert into Banco values(10,"Banco INBURSA");
+
+insert into Estado values(1,"Estado de Mexico");
 
 insert into Estado values(1,"Aguascalientes");
 insert into Estado values(2,"Baja California");
@@ -66,6 +81,7 @@ insert into Estado values(29,"Veracruz");
 insert into Estado values(30,"Yucatan");
 insert into Estado values(31,"Zacatecas");
 
+insert into Municipio values(1,"Ecatepec de Morelos",1);
 insert into Municipio values(1,"Alvaro Obregon",7);
 insert into Municipio values(2,"Azcapotzalco",7);
 insert into Municipio values(3,"Benito Juarez",7);
@@ -83,6 +99,7 @@ insert into Municipio values(14,"Tlalpan",7);
 insert into Municipio values(15,"Venustiano Carranza",7);
 insert into Municipio values(16,"Xochimilco",7);
 
+insert into Colonia values(1,"San Cristóbal Centro",1);
 insert into Colonia values(1,"Acueducto",1);
 insert into Colonia values(2,"Acuilotla",1);
 insert into Colonia values(3,"Agricola",1);

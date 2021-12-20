@@ -59,6 +59,19 @@ router.post('/registerUser',(req,res)=>{
   });
 });
 
+router.post('/updateBuyer',(req,res)=>{
+  //getting the body of the request
+  const body = req.body;
+  const buyerId = req.session.userid;
+  console.log(body);
+  DB.updateBuyer(body, buyerId).then(updateState=>{
+    if(updateState == 1){
+      return res.send({ message: "Datos modificados con éxito. Recargue la página"});
+    }
+    return res.send({message: "Algo salió mal, intente de nuevo"});
+  });
+});
+
 
 router.post('/loginUser',(req,res)=>{
   //getting the body of the request
@@ -88,12 +101,14 @@ router.get('/buyerHome', function(req, res, next) {
   if(!req.session.username){
 		return res.redirect('/users/login');
   }
-  var products = [];
-  //console.log("Nombre: " + req.session.username);
-  DB.getProducts().then(prods =>{
-    console.log("Productos");
-    console.log(prods);
-    res.render('buyer/buyerHome', { title: 'IGITIENDA', username: req.session.username, userid: req.session.userid, products: products, prods: prods });
+  DB.getStores().then(stores =>{
+    console.log("Negocios");
+    console.log(stores);
+    res.render('buyer/buyerHome', { 
+      title: 'EcaStore',
+      username: req.session.username,
+      userid: req.session.userid,
+      stores: stores });
   });
 });
 
@@ -102,7 +117,12 @@ router.get('/sellerHome', function(req, res, next) {
   if(!req.session.username){
 		return res.redirect('/users/login');
   }
-  var products = [
+  DB.getStores().then(stores =>{
+    console.log("Negocios");
+    console.log(stores);
+    res.render('seller/sellerHome', { title: 'EcaStore', username: req.session.username, userid: req.session.userid, stores: stores });
+  });
+  /* var products = [
     { name: 'Zapato escolar', description: "Descripción del producto", price: 500},
     { name: 'Carro control remoto', description: "Descripción del producto", price: 500},
     { name: 'Taladro eléctrico', description: "Descripción del producto", price: 500},
@@ -114,20 +134,82 @@ router.get('/sellerHome', function(req, res, next) {
     { name: 'Botas de trabajo', description: "Descripción del producto", price: 500},
   ];
   //console.log("Nombre: " + req.session.username);
-  res.render('seller/sellerHome', { title: 'IGITIENDA', username: req.session.username, userid: req.session.userid, products: products });
+  res.render('seller/sellerHome', { title: 'IGITIENDA', username: req.session.username, userid: req.session.userid, products: products }); */
 });
 
-router.post('/registerProduct',(req,res)=>{
+router.post('/registerStore',(req,res)=>{
   //getting the body of the request
   const body = req.body;
   const sellerId = req.session.userid;
   console.log(body);
   console.log("sellerid: " + sellerId);
-  DB.registerProduct(body, sellerId).then(regProd=>{
+  DB.registerStore(body, sellerId).then(regProd=>{
+      if(regProd == 1){
+          return res.send({ message: "Su negocio se ha registrado con éxito"});
+      }
+      return res.send({message: "Algo salió mal, intente de nuevo"});
+  });
+});
+
+router.post('/registerAddress',(req,res)=>{
+  //getting the body of the request
+  const body = req.body;
+  const buyerId = req.session.userid;
+  console.log(body);
+  console.log("buyerId: " + buyerId);
+  DB.registerAddress(body, buyerId).then(regAdd=>{
+      if(regAdd == 1){
+          return res.send({ message: "Dirección de envio registrada con éxito"});
+      }
+      return res.send({message: "Algo salió mal, intente de nuevo"});
+  });
+});
+
+router.post('/registerPaymentMethod',(req,res)=>{
+  //getting the body of the request
+  const body = req.body;
+  const buyerId = req.session.userid;
+  console.log(body);
+  console.log("buyerId: " + buyerId);
+  DB.registerPaymentMethod(body, buyerId).then(regAdd=>{
+      if(regAdd == 1){
+          return res.send({ message: "Método de pago registrado con éxito"});
+      }
+      return res.send({message: "Algo salió mal, intente de nuevo"});
+  });
+});
+
+router.post('/registerProduct',(req,res)=>{
+  //getting the body of the request
+  const body = req.body;
+  //const sellerId = req.session.userid;
+  console.log(body);
+  //console.log("sellerid: " + sellerId);
+  DB.registerProduct(body).then(regProd=>{
       if(regProd == 1){
           return res.send({ message: "Producto registrado con éxito"});
       }
       return res.send({message: "Algo salió mal, intente de nuevo"});
+  });
+});
+
+router.post('/updateProduct',(req,res)=>{
+  //getting the body of the request
+  const body = req.body;
+  //const sellerId = req.session.userid;
+  console.log("Product data: ");
+  console.log(body.productId);
+  //console.log("sellerid: " + sellerId);
+  DB.getStoreIdByProductId(body.productId).then(store=>{
+    var storeId = store;
+    console.log("StoreId: ");
+    console.log(storeId.storeId);
+    DB.updateProduct(body, storeId.storeId).then(updateProd=>{
+      if(updateProd == 1){
+          return res.send({ message: "Datos modificados con éxito. Recargue la Página"});
+      }
+      return res.send({message: "Algo salió mal, intente de nuevo"});
+    });
   });
 });
 
@@ -228,14 +310,28 @@ router.post('/payCart',(req,res)=>{
   //getting the body of the request
   const body = req.body;
   const buyerId = req.session.userid;
-  console.log("Im hereeeeee in payCart");
+  //console.log("Im hereeeeee in payCart");
   console.log(body);
   console.log(buyerId);
   DB.payCart(body, buyerId).then(regProd=>{
-    if(regProd == 1){
-        return res.send({status: 1, message: "Producto comprado con éxito"});
-    }
-    return res.send({status: -1, message: "Algo salió mal, intente de nuevo"});
+    DB.getProductQuantity(body.productId).then(stock=>{
+      DB.modifyProductStock(body, stock).then(modifyProdStock=>{
+        DB.deleteProductFromCart(body.productId, buyerId).then(deleteProdInCar=>{
+          DB.getStoreIdByProductId(body.productId).then(store=>{
+            var storeId = store;
+            console.log("StoreId: ");
+            console.log(storeId.storeId);
+            DB.addingProductToSalesRecord(body, storeId.storeId).then(salesRecord=>{
+              if(salesRecord == 1){
+                return res.send({status: 1, message: "Producto comprado con éxito"});
+              }
+              return res.send({status: -1, message: "Algo salió mal, intente de nuevo"});
+            });
+          });
+        }); 
+      }); 
+    });
+    //return res.send({status: -1, message: "Algo salió mal, intente de nuevo"});
   });
 });
 
@@ -251,6 +347,64 @@ router.get('/Product/:id', function(req, res, next) {
     console.log("selectProd: ");
     console.log(selectProd);
     res.render('Producto', { title: 'IGITIENDA', username: req.session.username, userid: req.session.userid, prodSelect: selectProd});
+  });
+});
+
+router.get('/ModifyProduct/:id', function(req, res, next) {
+  if(!req.session.username){
+		return res.redirect('/users/login');
+  }
+  const productId = req.params.id;
+  //console.log("Product id: ");
+  //console.log(body);
+  DB.getProductbyId(productId).then(selectProd=>{
+    console.log("selectProd: ");
+    console.log(selectProd);
+    res.render('store/modifyProduct', { title: 'IGITIENDA', username: req.session.username, userid: req.session.userid, product: selectProd, productId: productId});
+  });
+});
+
+
+
+router.get('/sellerStoreProducts/:id', function(req, res, next) {
+  if(!req.session.username){
+		return res.redirect('/users/login');
+  }
+  const storeId = req.params.id;
+  //console.log("Product id: ");
+  //console.log(body);
+  DB.getProductsbyStoreId(storeId).then(prods=>{
+    console.log("Products");
+    console.log(prods);
+    res.render('store/storeProducts', { title: 'Ecastore', username: req.session.username, userid: req.session.userid, products: prods, type: 0});
+  });
+});
+
+router.get('/OtherSellersStoreProducts/:id', function(req, res, next) {
+  if(!req.session.username){
+		return res.redirect('/users/login');
+  }
+  const storeId = req.params.id;
+  //console.log("Product id: ");
+  //console.log(body);
+  DB.getProductsbyStoreId(storeId).then(prods=>{
+    console.log("Products");
+    console.log(prods);
+    res.render('store/storeProducts', { title: 'Ecastore', username: req.session.username, userid: req.session.userid, products: prods, type: 2});
+  });
+});
+
+router.get('/buyerStoreProducts/:id', function(req, res, next) {
+  if(!req.session.username){
+		return res.redirect('/users/login');
+  }
+  const storeId = req.params.id;
+  //console.log("Product id: ");
+  //console.log(body);
+  DB.getProductsbyStoreId(storeId).then(prods=>{
+    console.log("Products");
+    console.log(prods);
+    res.render('store/storeProducts', { title: 'Ecastore', username: req.session.username, userid: req.session.userid, products: prods, type: 1});
   });
 });
 
@@ -276,16 +430,33 @@ router.get('/sellerProfile', function(req, res, next) {
   res.render('seller/sellerProfile',{ title: 'IGITIENDA', username: req.session.username, userid: req.session.userid });
 });
 
+router.get('/sellerStores', function(req, res, next) {
+  DB.getStoresBySellerId(req.session.userid).then(stores =>{
+    console.log("Negocios");
+    console.log(stores);
+    res.render('seller/sellerStores',{ 
+      title: 'EcaStore', 
+      username: req.session.username,
+      userid: req.session.userid, 
+      stores: stores
+    });
+  })
+});
+
+
 router.get('/buyerProfile', function(req, res, next) {
   DB.getPaymentMethod(req.session.userid).then(methods =>{
     DB.getBuyerDirection(req.session.userid).then(directions =>{
-      res.render('buyer/buyerProfile', { 
-        title: 'IGITIENDA', 
-        username: req.session.username, 
-        userid: req.session.userid,  
-        methods: methods, 
-        directions: directions
-      });
+      DB.getBuyerById(req.session.userid).then(user =>{
+        res.render('buyer/buyerProfile', { 
+          title: 'IGITIENDA', 
+          username: req.session.username, 
+          userid: req.session.userid,  
+          methods: methods, 
+          directions: directions,
+          user: user
+        });
+      }); 
     });  
   });
 });
@@ -307,5 +478,17 @@ router.get('/HistorialCompras', function(req, res, next) {
   }); 
 });
 
+router.get('/salesRecord/:id', function(req, res, next) {
+  if(!req.session.username){
+		return res.redirect('/users/login');
+  }
+  const body = req.params.id;
+  //console.log("Nombre: " + req.session.username);
+  DB.getSalesRecord(body).then(products =>{
+    console.log("Ventas: ");
+    console.log(products);
+    res.render('storeSalesRecord', { title: 'EcaStore', username: req.session.username, userid: req.session.userid, products: products });
+  }); 
+});
 
 module.exports = router;

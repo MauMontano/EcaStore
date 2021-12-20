@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body>
+
+<header>
+    <%- include('../partials/sellerHeader'); %>
+</header>
+
+<main>
+
+    <div class="bg-light ">
+        <div class="d-flex justify-content-center">
+            <img class="mt-5"src="/images/logo1.svg" width="100" height="95" alt="">
+        </div>
+        <div class="container text-center text-secondary">
+            <p>Dentro de este apartado podras revisar los negocios <br> que has publicado.
+            </p>
+        </div>
+        <!-- <h1 class="mt-5 text-primary" id="misproductos">Mis Negocios</h1> -->
+        <div class="bg-white">
+                <div class="bg-light ">
+                    <div class="bg-white">
+                        <br>
+                        <br>
+                        <h4 class="ml-5 mb-5"> <%= username %> Explora tus negocios</h3>
+                            <div class="row d-flex justify-content-center bg-white">
+                                <% stores.forEach(function(store) { %>
+                                    <div class="card mr-5 mb-5" style="width: 18rem;">
+                                        <img class="card-img-top" src="/images/<%= store.img %>" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><strong><%= store.name %></strong></h5>
+                                            <p class="card-text"><%= store.description %></p>
+                                            <div class="d-flex justify-content-center mt-2">
+                                                <button id="<%= store.id %>" onClick="getStoreId(this.id)" class="btn btn-primary w-100" data-toggle="modal" data-target="#registerProduct" data-whatever="@mdo"><i class="bi bi-plus"></i>Agregar Producto</button>
+                                            </div>
+                                            <div class="d-flex justify-content-center mt-2">
+                                                <a class="btn btn-primary w-100" href="/users/sellerStoreProducts/<%= store.id %>">Ver productos</a>
+                                            </div>
+                                            <div class="d-flex justify-content-center mt-2">
+                                                <a class="btn btn-primary w-100" href="/users/salesRecord/<%= store.id %>">Ver Ventas</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% }); %>
+                            </div>
+                    </div>
+                    
+                </div>
+
+        </div>
+        
+    </div>
+    <!--Modal-->
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Publica un producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form class="was-validated" onsubmit='return registerProduct(this, event);' method='post'>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Nombre del producto</label>
+                        <input id="name" type="text" class="form-control" id="recipient-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Descripción</label>
+                        <textarea id="description" class="form-control" id="message-text" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Precio (MXN)</label>
+                        <input id="price" type="number" class="form-control" id="recipient-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Stock inicial (Número de unidades disponibles)</label>
+                        <input id="stock" type="number" class="form-control" id="recipient-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Categoría</label>
+                        <select id="category" class="form-control" id="exampleFormControlSelect1">
+                            <option value="1">Electrónicos</option>
+                            <option value="2">Calzado</option>
+                            <option value="3">Artículos para el hogar</option>
+                            <option value="4">Herramientas</option>
+                            <option value="5">Artículos para mascota</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label for="exampleFormControlFile1">Foto 1</label>
+                            <div class="custom-file">
+                                <input id="img1" type="file" class="custom-file-input" id="validatedCustomFile" required>
+                                <label class="custom-file-label" for="validatedCustomFile">Elija una foto...</label>
+                                <div class="invalid-feedback">Debe seleccionar una foto</div>
+                            </div>
+                        </div>
+                        <div class="col form-group">
+                            <label for="exampleFormControlFile1">Foto 2</label>
+                            <div class="custom-file">
+                                <input id="img2" type="file" class="custom-file-input" id="validatedCustomFile" required>
+                                <label class="custom-file-label" for="validatedCustomFile">Elija una foto...</label>
+                                <div class="invalid-feedback">Debe seleccionar una foto</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col form-group">
+                            <label for="exampleFormControlFile1">Foto 3</label>
+                            <div class="custom-file">
+                                <input id="img3" type="file" class="custom-file-input" id="validatedCustomFile" required>
+                                <label class="custom-file-label" for="validatedCustomFile">Elija una foto...</label>
+                                <div class="invalid-feedback">Debe seleccionar una foto</div>
+                            </div>
+                        </div>
+                        <div class="col form-group">
+                            <label for="exampleFormControlFile1">Foto 4</label>
+                            <div class="custom-file">
+                                <input id="img4" type="file" class="custom-file-input" id="validatedCustomFile" required>
+                                <label class="custom-file-label" for="validatedCustomFile">Elija una foto...</label>
+                                <div class="invalid-feedback">Debe seleccionar una foto</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="addProduct">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Publicar producto</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div> -->
+</main>
+<!-- Modal -->
+<div class="modal fade" id="registerProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Publica un producto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <form class="" onsubmit='return registerProduct(this, event);' method='post'>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Nombre del producto*</label>
+                    <input id="name" type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Descripción*</label>
+                    <textarea id="description" class="form-control" id="message-text"></textarea>
+                    <small class="form-text text-muted">10-150 palabras</small>
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Característica 1</label>
+                    <textarea id="carac1" class="form-control" id="message-text"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Característica 2</label>
+                    <textarea id="carac2" class="form-control" id="message-text"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Característica 3</label>
+                    <textarea id="carac3" class="form-control" id="message-text"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Precio (MXN)*</label>
+                    <input id="price" type="number" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Stock inicial (Número de unidades disponibles)*</label>
+                    <input id="stock" type="number" class="form-control" id="recipient-name">
+                </div>
+                <!-- <div class="form-group">
+                    <label for="exampleFormControlSelect1">Categoría*</label>
+                    <select id="category" class="form-control" id="exampleFormControlSelect1">
+                        <option value="1">Electrónicos</option>
+                        <option value="2">Calzado</option>
+                        <option value="3">Artículos para el hogar</option>
+                        <option value="4">Herramientas</option>
+                    </select>
+                </div> -->
+                <div class="form-row">
+                    <div class="col form-group">
+                        <label for="exampleFormControlFile1">Foto 1*</label>
+                        <div class="custom-file">
+                            <input id="img1" type="file" class="custom-file-input" id="validatedCustomFile">
+                            <label class="custom-file-label" for="validatedCustomFile">Elija una foto...</label>
+                            <div class="invalid-feedback">Debe seleccionar una foto</div>
+                        </div>
+                    </div>
+                    <div class="col form-group">
+                        <label for="exampleFormControlFile1">Foto 2*</label>
+                        <div class="custom-file">
+                            <input id="img2" type="file" class="custom-file-input" id="validatedCustomFile">
+                            <label class="custom-file-label" for="validatedCustomFile">Elija una foto...</label>
+                            <div class="invalid-feedback">Debe seleccionar una foto</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col form-group">
+                        <label for="exampleFormControlFile1">Foto 3*</label>
+                        <div class="custom-file">
+                            <input id="img3" type="file" class="custom-file-input" id="validatedCustomFile">
+                            <label class="custom-file-label" for="validatedCustomFile">Elija una foto...</label>
+                            <div class="invalid-feedback">Debe seleccionar una foto</div>
+                        </div>
+                    </div>
+                    <div class="col form-group">
+                        <label for="exampleFormControlFile1">Foto 4*</label>
+                        <div class="custom-file">
+                            <input id="img4" type="file" class="custom-file-input" id="validatedCustomFile">
+                            <label class="custom-file-label" for="validatedCustomFile">Elija una foto...</label>
+                            <div class="invalid-feedback">Debe seleccionar una foto</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="addProduct">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Publicar producto</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<footer>
+    <%- include('../partials/footerSeller'); %>
+</footer>
+</body>
+</html>
+
+
+<style lang="css">
+    #misproductos{
+        text-align: center;
+    }
+
+    #productoboton{
+        text-align: center;
+        padding-top: 3%;
+    }
+</style>

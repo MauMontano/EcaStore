@@ -2,9 +2,9 @@ var mysql = require('mysql');
 
 var pool  = mysql.createPool({
     host     : 'localhost',
-    user     : 'digiUser',
-    password : 'digitienda',
-    database : 'Digitienda'
+    user     : 'ecaUser',
+    password : 'ecaStore',
+    database : 'EcaStore'
 });
 
 exports.pool = pool;
